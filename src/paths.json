@@ -1,0 +1,27 @@
+{
+  "links": [
+    {
+      "path": "/os.svg",
+      "title": "osu!",
+      "url": "https://osu.ppy.sh/users/20144046"
+    },
+
+    {
+      "path": "/discord.svg",
+      "title": "Discord",
+      "url": "https://discordapp.com/users/714482641134551071"
+    },
+
+    {
+      "path": "/github.svg",
+      "title": "Github",
+      "url": "https://github.com/Baconway"
+    },
+
+    {
+      "path": "/roblox.svg",
+      "title": "Roblox",
+      "url": "https://www.roblox.com/users/243533657/profile"
+    }
+  ]
+}
