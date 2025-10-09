@@ -3,24 +3,28 @@
     {
       "path": "/os.svg",
       "title": "osu!",
+      "alt": "osu! Link",
       "url": "https://osu.ppy.sh/users/20144046"
     },
 
     {
       "path": "/discord.svg",
       "title": "Discord",
+      "alt": "Discord Link",
       "url": "https://discordapp.com/users/714482641134551071"
     },
 
     {
       "path": "/github.svg",
-      "title": "Github",
+      "title": "GitHub",
+      "alt": "GitHub Link",
       "url": "https://github.com/Baconway"
     },
 
     {
       "path": "/roblox.svg",
       "title": "Roblox",
+      "alt": "Roblox Link",
       "url": "https://www.roblox.com/users/243533657/profile"
     }
   ]
