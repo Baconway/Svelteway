@@ -3,6 +3,7 @@
   let { data } = $props();
   import Status from "./status.svelte";
   import Info from "./info.svelte";
+  import Activities from "./activities.svelte";
 </script>
 
 <div class="flex justify-center items-center gap-65 mt-50">
@@ -22,7 +23,3 @@
     </div>
   </div>
 </div>
-
-<style lang="postcss">
-  @reference 'tailwindcss';
-</style>

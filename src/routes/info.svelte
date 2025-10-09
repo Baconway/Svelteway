@@ -1,5 +1,5 @@
 <script>
-  import { links } from "../paths.json";
+  import { links } from "./jsonPaths/paths.json";
 </script>
 
 <div class="flex flex-row items-center justify-center gap-4 w-[64%] mt-1">
