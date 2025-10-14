@@ -20,7 +20,7 @@
   class="absolute bottom-0 right-[33%] flex flex-col justify-center items-start"
 >
   <button
-    class="relative top-0 left-0 border-t-2 border-l-2 border-r-2 text-white rounded-t-4xl"
+    class="relative top-0 left-0 border-t-2 border-l-2 border-r-2 text-white rounded-t-4xl not-dark:border-black"
     onclick={() => {
       visible = !visible;
     }}
@@ -35,7 +35,9 @@
   {#if visible}
     <div class="flex flex-col duration-100 gap-3.5" transition:slide>
       {#each activities as activity}
-        <div class="flex flex-row gap-4 w-xl border-1 border-blue-600">
+        <div
+          class="flex flex-row gap-4 w-xl p-1.5 rounded-sm border-2 border-blue-700 dark:border-salt-blue text-black dark:text-amber-50 bg-orange-200 dark:bg-gray-800"
+        >
           <div class=" relative">
             <img
               class="w-[75px] rounded-md"
@@ -44,6 +46,9 @@
                 activity.application_id,
                 activity.assets.large_image
               )}
+              title={activity.assets.large_text
+                ? `${activity.assets.large_text}`
+                : ""}
             />
             {#if activity.assets.small_image}
               <img
@@ -53,29 +58,23 @@
                   activity.application_id,
                   activity.assets.small_image
                 )}
+                title={activity.assets.small_text
+                  ? `${activity.assets.small_text}`
+                  : ""}
               />
             {/if}
           </div>
 
           <div class="flex flex-col w-[86%] justify-center">
-            <p
-              class="text-xl font-bold text-black dark:text-amber-50 truncate"
-              title={activity.name}
-            >
+            <p class="text-xl font-bold truncate" title={activity.name}>
               {activity.name}
             </p>
 
-            <p
-              class="text-sm text-black dark:text-amber-50 truncate"
-              title={activity.details}
-            >
+            <p class="text-sm truncate" title={activity.details}>
               {activity.details}
             </p>
 
-            <p
-              class="text-sm text-black dark:text-amber-50 truncate"
-              title={activity.state}
-            >
+            <p class="text-sm truncate" title={activity.state}>
               {activity.state}
             </p>
           </div>

@@ -4,6 +4,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
   --animate-rainbow: rainbow 4.5s ease-in-out infinite;
+  --color-salt-blue: #30a6d7;
 
   @keyframes rainbow {
     /*create keyframes to make animations*/
