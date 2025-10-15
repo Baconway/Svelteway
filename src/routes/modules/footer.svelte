@@ -1,6 +1,6 @@
 <script>
   import { slide } from "svelte/transition";
-  import { interpretImageLinks } from "./utilities";
+  import { interpretImageLinks } from "../utilities";
 
   let activities = $state(null);
   let visible = $state(true);
@@ -16,9 +16,7 @@
 </script>
 
 <!--overlaps with avatar, might wanna make it collapse if height isnt a certain amount-->
-<div
-  class="absolute bottom-0 right-[33%] flex flex-col justify-center items-start"
->
+<div class="absolute bottom-0 flex flex-col justify-center items-start">
   <button
     class="relative top-0 left-0 border-t-2 border-l-2 border-r-2 text-white rounded-t-4xl not-dark:border-black"
     onclick={() => {
@@ -30,13 +28,13 @@
       src="/menu-swap.svg"
     /></button
   >
-  <div class="w-xl mb-1 border-1 border-black dark:border-white"></div>
+  <div class="w-[100vw] mb-1 border-1 border-black dark:border-white"></div>
 
   {#if visible}
     <div class="flex flex-col duration-100 gap-3.5" transition:slide>
       {#each activities as activity}
         <div
-          class="flex flex-row gap-4 w-xl p-1.5 rounded-sm border-2 border-blue-700 dark:border-salt-blue text-black dark:text-amber-50 bg-orange-200 dark:bg-gray-800"
+          class="flex flex-row gap-4 w-xl p-1.5 rounded-sm border-2 border-indigo-700 dark:border-salt-blue text-black dark:text-amber-50 bg-gray-300 dark:bg-gray-800"
         >
           <div class=" relative">
             <img

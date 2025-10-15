@@ -1,7 +1,7 @@
 <script>
   let { children } = $props();
   import "../applet.css";
-  import Activities from "./activities.svelte";
+  import Footer from "./modules/footer.svelte";
 
   function themeChange(theme) {
     if (document.documentElement.className == "dark") {
@@ -37,6 +37,6 @@
   </div>
 </nav>
 
-<Activities></Activities>
+<Footer></Footer>
 
 {@render children()}
