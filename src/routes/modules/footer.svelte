@@ -1,6 +1,6 @@
 <script>
-  import { slide } from "svelte/transition";
-  import { interpretImageLinks } from "../utilities";
+  import { fade, scale } from "svelte/transition";
+  import { interpretImageLinks, cleanUpActivities } from "../utilities";
 
   let activities = $state(null);
   let visible = $state(true);
@@ -11,7 +11,8 @@
     );
 
     const data = await response.json();
-    activities = data.data.activities;
+    activities = cleanUpActivities(data.data.activities);
+    console.log(activities);
   });
 </script>
 
@@ -22,16 +23,12 @@
     onclick={() => {
       visible = !visible;
     }}
-    ><img
-      class="h-6 dark:invert {visible ? 'rotate-0' : 'rotate-180'}"
-      alt="collapse"
-      src="/menu-swap.svg"
-    /></button
+    ><img class="h-6 dark:invert" alt="collapse" src="/menu-swap.svg" /></button
   >
   <div class="w-[100vw] mb-1 border-1 border-black dark:border-white"></div>
 
   {#if visible}
-    <div class="flex flex-col duration-100 gap-3.5" transition:slide>
+    <div class="flex flex-row duration-100 gap-3.5" transition:fade>
       {#each activities as activity}
         <div
           class="flex flex-row gap-4 w-xl p-1.5 rounded-sm border-2 border-indigo-700 dark:border-salt-blue text-black dark:text-amber-50 bg-gray-300 dark:bg-gray-800"

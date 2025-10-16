@@ -9,6 +9,7 @@
   <div class="dark:text-white text-black w-2xl">
     <p class="text-8xl font-bold">Welcome!</p>
     <p class="text-3xl">This is a revamped landing page.</p>
+    <p class="text-xl pr-19 pl-19">And it's actually good to look at.</p>
     <Info></Info>
   </div>
   <div class="shrink-0">
@@ -18,7 +19,6 @@
         alt="avatar img"
         src={data.avatar}
       />
-
       <Status></Status>
     </div>
   </div>

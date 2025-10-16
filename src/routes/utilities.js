@@ -10,3 +10,21 @@ export function interpretImageLinks(application_id, img) {
     return `https://media.discordapp.net/${img.substring(3)}`;
   }
 }
+
+export function cleanUpActivities(activities, needsCustom) {
+  // pretty much made just to handle custom statuses with id='custom'
+  let cleaned = [];
+  for (let index = 0; index < activities.length; index++) {
+    const element = activities[index];
+
+    if (needsCustom) {
+      return element;
+    } //just in case I need it
+
+    if (element.id != "custom") {
+      cleaned.push(element);
+    }
+  }
+
+  return cleaned;
+}

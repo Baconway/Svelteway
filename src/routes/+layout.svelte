@@ -18,6 +18,7 @@
   <div class="flex gap-1 basis-0 grow">
     <a class="p-2 dark:text-white text-black" href="/">Home</a>
     <a class="p-2 dark:text-white text-black" href="/portfolio">Portfolio</a>
+    <a class="p-2 dark:text-white text-black" href="/extras">Extras</a>
   </div>
 
   <div class="flex justify-center grow-1">
