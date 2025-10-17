@@ -1,7 +1,7 @@
 <script>
   let { children } = $props();
   import "../applet.css";
-  import Footer from "./modules/footer.svelte";
+  import Footer from "./footer.svelte";
 
   function themeChange(theme) {
     if (document.documentElement.className == "dark") {

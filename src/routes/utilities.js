@@ -18,9 +18,10 @@ export function cleanUpActivities(activities, needsCustom) {
     const element = activities[index];
 
     if (needsCustom) {
-      return element;
-    } //just in case I need it
-
+      if (element.id == "custom") {
+        return element;
+      }
+    }
     if (element.id != "custom") {
       cleaned.push(element);
     }
