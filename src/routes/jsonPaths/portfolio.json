@@ -1,0 +1,44 @@
+{
+  "project": [
+    {
+      "Title": "Nic: Cold Front",
+      "Link": "https://www.roblox.com/communities/34890699/Asset-Tester-3#!/about",
+      "Image": ["/cf.webp"]
+    },
+
+    {
+      "Title": "noob larping centre",
+      "Link": "https://www.roblox.com/communities/16690551/noob-larping-centre#!/about",
+      "Image": ["/nlc.webp"]
+    },
+
+    {
+      "Title": "Personal GitHub Projects",
+      "Link": "https://github.com/Baconway?tab=repositories",
+      "Image": ["/salt.png"]
+    }
+  ],
+
+  "know": [
+    {
+      "Title": "Front-End",
+      "Image": ["/html.svg", "/javascript.svg", "/css.svg"]
+    },
+
+    {
+      "Title": "Roblox",
+      "Link": "https://create.roblox.com/talent/creators/243533657",
+      "Image": ["/lua.png", "/studio.svg"]
+    },
+
+    {
+      "Title": "Other Laguages",
+      "Image": ["/py.svg"]
+    },
+
+    {
+      "Title": "Absolutely nothing about back-end yet.",
+      "Image": ["/shiroko-dance.gif"]
+    }
+  ]
+}

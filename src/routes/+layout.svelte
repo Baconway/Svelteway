@@ -13,7 +13,7 @@
 </script>
 
 <nav
-  class="flex border-4 dark:border-amber-50 border-b-gray-900 text-[25px] pl-3 m-5 sticky justify-between items-center bg-amber-50 dark:bg-black rounded-2xl"
+  class="flex border-4 dark:border-amber-50 border-b-gray-900 text-[25px] pl-3 m-5 sticky top-0 justify-between items-center bg-amber-50 dark:bg-black rounded-xl"
 >
   <div class="flex gap-1 basis-0 grow">
     <a class="p-2 dark:text-white text-black" href="/">Home</a>

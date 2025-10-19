@@ -1,0 +1,61 @@
+{
+  "CopyInfo": [
+    {
+      "Title": "Umamusume",
+      "Desc": "Umamusume Friend Code",
+      "CopyItem": "682841017093",
+      "Image": "/uma.png"
+    },
+
+    {
+      "Title": "Honkai: Star Rail",
+      "Desc": "(Asia) HSR Friend Code",
+      "CopyItem": "802221265",
+      "Image": "/hsr.png"
+    },
+
+    {
+      "Title": "Blue Archive",
+      "Desc": "(Asia) Blue Archive Friend Code",
+      "CopyItem": "AYYFRDKZ",
+      "Image": "/ba.webp"
+    },
+
+    {
+      "Title": "maimai でらっくす",
+      "Desc": "maimai でらっくす Friend Code",
+      "CopyItem": "101820453238481",
+      "Image": "/mai.webp"
+    },
+
+    {
+      "Title": "Azur Lane",
+      "Desc": "(Avrora) Azur Lane Username",
+      "CopyItem": "Baconway",
+      "Image": "/al.png"
+    }
+  ],
+
+  "LinkInfo": [
+    {
+      "Title": "Leetify",
+      "Desc": "Counter Strike 2 Stats ",
+      "Link": "https://leetify.com/@baconway",
+      "Image": "/leetify.svg"
+    },
+
+    {
+      "Title": "Youtube",
+      "Desc": "Channel for Random Stuff",
+      "Link": "https://www.youtube.com/channel/UCTgtTyEKojAzULPDsRcBm0A",
+      "Image": "/youtube2.png"
+    },
+
+    {
+      "Title": "osu!",
+      "Desc": "(Retired) osu! Profile",
+      "Link": "https://osu.ppy.sh/users/20144046",
+      "Image": "/os2.svg"
+    }
+  ]
+}
