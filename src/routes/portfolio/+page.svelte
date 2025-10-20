@@ -30,7 +30,7 @@
     {@render infoBlock("know")}
   </div>
 
-  <div class="h-[75vh] w-[1px] bg-black dark:bg-amber-100"></div>
+  <div class="h-[60vh] w-[1px] bg-black dark:bg-amber-100"></div>
 
   <div class="flex flex-col justify-center items-center gap-5 grow-1 h-min">
     <p class="text-3xl font-bold dark:text-white">
