@@ -1,5 +1,6 @@
 <script>
   let { children } = $props();
+  let miniMenuVisible = $state(false);
   import "../applet.css";
   import Footer from "./footer.svelte";
 
@@ -13,7 +14,8 @@
 </script>
 
 <nav
-  class="flex border-4 dark:border-amber-50 border-b-gray-900 text-[25px] pl-3 m-5 sticky top-0 justify-between items-center bg-amber-50 dark:bg-black rounded-xl"
+  class="flex border-4 dark:border-amber-50 border-b-gray-900 text-[25px] pl-3 m-5 sticky top-0 justify-between items-center bg-amber-50 dark:bg-black rounded-xl
+   not-md:hidden"
 >
   <div class="flex gap-1 basis-0 grow">
     <a class="p-2 dark:text-white text-black" href="/">Home</a>
@@ -36,6 +38,12 @@
       alt="theme switching button"
     />
   </div>
+</nav>
+
+<nav
+  class="fixed top-3 left-2 rounded-4xl w-12 h-12 border-2 dark:border-amber-50 md:hidden"
+>
+  <img class="dark:invert p-1" src="/menu.svg" alt="hamburger" />
 </nav>
 
 <Footer></Footer>
