@@ -8,6 +8,7 @@
   import { fade, scale, slide } from "svelte/transition";
 </script>
 
+<title>Home Page</title>
 <div class="flex justify-center items-center gap-65 mt-50">
   <div class="dark:text-white text-black w-2xl">
     <p class="text-8xl font-bold">Welcome!</p>

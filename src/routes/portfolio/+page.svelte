@@ -24,6 +24,7 @@
   {/each}
 {/snippet}
 
+<title>Portfolio</title>
 <div class="ml-5 flex flex-row gap-5 justify-center">
   <div class="flex flex-col justify-center items-center gap-5 grow-1 h-min">
     <p class="text-3xl font-bold dark:text-white">What I Know:</p>

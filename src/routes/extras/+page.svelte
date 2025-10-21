@@ -15,6 +15,7 @@
   </div>
 {/snippet}
 
+<title>Extras</title>
 <div class="ml-5 flex flex-col justify-center items-center gap-2">
   <p class="text-2xl font-bold dark:text-white">Other Links</p>
 
