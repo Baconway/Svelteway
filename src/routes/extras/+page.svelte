@@ -8,7 +8,11 @@
     class="flex flex-col flex-wrap justify-between items-center align-middle w-64 border-2 border-indigo-700 dark:border-salt-blue bg-gray-300 dark:bg-gray-800 dark:text-white p-3 rounded-sm"
   >
     <div class="flex flex-col justify-center items-center gap-1">
-      <img class="w-14 rounded-sm" alt="supporting" src={reference.Image} />
+      <img
+        class="w-14 h-14 rounded-sm object-contain"
+        alt="supporting"
+        src={reference.Image}
+      />
       <p class="font-bold text-2xl">{reference.Title}</p>
       <p>{reference.Desc}</p>
     </div>
