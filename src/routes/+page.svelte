@@ -22,7 +22,7 @@
   >
     <p class="text-8xl font-bold">Welcome!</p>
     <p class="text-3xl">This is a revamped landing page.</p>
-    <p class="text-xl">
+    <p class="text-xl not-md:text-lg">
       (Still a static Website, but I'll figure out what else to do.)
     </p>
     <Info></Info>
