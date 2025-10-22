@@ -11,7 +11,8 @@
       target="_blank"
     >
       <div
-        class="flex flex-row justify-between items-center w-lg dark:text-white bg-gray-300 dark:bg-gray-800 ml-0.5 rounded-lg p-2.5 border-1 border-indigo-700 dark:border-salt-blue"
+        class="flex flex-row justify-between items-center w-lg dark:text-white bg-gray-300 dark:bg-gray-800 ml-0.5 rounded-lg p-2.5 border-1 border-indigo-700 dark:border-salt-blue
+        not-md:w-md"
       >
         <p class="font-bold text-lg">{parts.Title}</p>
         <div class="flex flex-wrap gap-2">
