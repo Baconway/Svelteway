@@ -14,7 +14,7 @@
         src={reference.Image}
       />
       <p class="font-bold text-2xl">{reference.Title}</p>
-      <p>{reference.Desc}</p>
+      <p class="text-sm">{reference.Desc}</p>
     </div>
   </div>
 {/snippet}
