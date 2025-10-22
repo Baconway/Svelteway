@@ -9,8 +9,17 @@
 </script>
 
 <title>Home Page</title>
-<div class="flex justify-center items-center gap-65 mt-50">
-  <div class="dark:text-white text-black w-2xl">
+
+<div
+  class="flex justify-center items-center gap-65 mt-50
+  not-md:gap-10 not-md:flex-col
+"
+>
+  <div
+    class="flex flex-col dark:text-white text-black w-2xl
+  not-md:justify-center not-md:items-center
+  "
+  >
     <p class="text-8xl font-bold">Welcome!</p>
     <p class="text-3xl">This is a revamped landing page.</p>
     <p class="text-xl">
