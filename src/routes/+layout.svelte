@@ -42,7 +42,7 @@
 </nav>
 
 <nav
-  class="fixed top-3 left-2 rounded-4xl w-12 h-12 border-2 dark:border-amber-50 md:hidden"
+  class="fixed top-3 left-2 rounded-4xl w-12 h-12 border-2 dark:border-amber-50 md:hidden z-3"
 >
   <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
@@ -56,18 +56,33 @@
 
 {#if miniMenuVisible}
   <div
-    class="absolute top-20 bottom-0 left-0 right-0 bg-black/10 backdrop-blur-sm z-2 duration-75"
+    class="absolute top-0 bottom-0 left-0 right-0 mt-10 bg-black/10 backdrop-blur-xs z-2 duration-75"
     transition:fade
   >
-    <div class="flex flex-col justify-center items-center">
-      <img class="dark:invert-100 w-40" src="/logo.png" alt="logo here" />
-      <a class="p-2 dark:text-white text-black" href="/">Home</a>
-      <a class="p-2 dark:text-white text-black" href="/portfolio">Portfolio</a>
-      <a class="p-2 dark:text-white text-black" href="/extras">Extras</a>
+    <div class="flex flex-col justify-center items-center gap-2">
+      <div
+        class="w-lg bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue flex justify-center"
+      >
+        <img class="dark:invert-100 w-40" src="/logo.png" alt="logo here" />
+      </div>
+
+      <a
+        class="w-lg text-center bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue p-2 dark:text-white text-black"
+        href="/">Home</a
+      >
+      <a
+        class="w-lg text-center bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue p-2 dark:text-white text-black"
+        href="/portfolio">Portfolio</a
+      >
+      <a
+        class="w-lg text-center bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue p-2 dark:text-white text-black"
+        href="/extras">Extras</a
+      >
       <!-- svelte-ignore a11y_click_events_have_key_events -->
       <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+
       <img
-        class="max-w-[1.75em] pr-1 hover:cursor-pointer pl-0.5 dark:invert object-center"
+        class="max-w-[2.15rem] pr-1 hover:cursor-pointer pl-0.5 dark:invert object-center"
         onclick={() => themeChange()}
         id="switch-theme"
         src="/themeSwitch.svg"
