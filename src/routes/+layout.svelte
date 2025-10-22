@@ -61,21 +61,21 @@
   >
     <div class="flex flex-col justify-center items-center gap-2">
       <div
-        class="w-lg bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue flex justify-center"
+        class="w-xs bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue flex justify-center"
       >
         <img class="dark:invert-100 w-40" src="/logo.png" alt="logo here" />
       </div>
 
       <a
-        class="w-lg text-center bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue p-2 dark:text-white text-black"
+        class="w-xs text-center bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue p-2 dark:text-white text-black"
         href="/">Home</a
       >
       <a
-        class="w-lg text-center bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue p-2 dark:text-white text-black"
+        class="w-xs text-center bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue p-2 dark:text-white text-black"
         href="/portfolio">Portfolio</a
       >
       <a
-        class="w-lg text-center bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue p-2 dark:text-white text-black"
+        class="w-xs text-center bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue p-2 dark:text-white text-black"
         href="/extras">Extras</a
       >
       <!-- svelte-ignore a11y_click_events_have_key_events -->
