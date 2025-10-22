@@ -20,7 +20,7 @@
 {/snippet}
 
 <title>Extras</title>
-<div class="ml-5 flex flex-col justify-center items-center gap-2">
+<div class="ml-5 not-md:mt-8 flex flex-col justify-center items-center gap-2">
   <p class="text-2xl font-bold dark:text-white">Other Links</p>
 
   <div class="flex flex-row gap-2 flex-wrap justify-center max-w-256">

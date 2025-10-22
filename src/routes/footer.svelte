@@ -3,12 +3,12 @@
   import { innerWidth, innerHeight } from "svelte/reactivity/window";
   import Activities from "./modules/activities.svelte";
 
-  let visible = $state(true);
+  let visible = $state(false);
 </script>
 
 <!--overlaps with avatar, might wanna make it collapse if height isnt a certain amount-->
 <div
-  class="fixed bottom-0 flex flex-col justify-center items-start {visible
+  class="fixed bottom-0 flex flex-col justify-center items-start w-[100vw] z-1 bg-black/10 backdrop-blur-sm {visible
     ? 'pb-1'
     : ''}"
 >
@@ -17,7 +17,11 @@
     onclick={() => {
       visible = !visible;
     }}
-    ><img class="h-6 dark:invert" alt="collapse" src="/menu-swap.svg" /></button
+    ><img
+      class="h-6 not-md:h-12 dark:invert"
+      alt="collapse"
+      src="/menu-swap.svg"
+    /></button
   >
   <div class="w-[100vw] mb-1 border-1 border-black dark:border-white"></div>
 

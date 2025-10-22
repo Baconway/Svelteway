@@ -30,7 +30,11 @@
   />
 {/snippet}
 
-<div class="flex flex-row duration-100 gap-3.5" transition:scale>
+<div
+  class="flex flex-row duration-100 gap-3.5
+  not-md:flex-col"
+  transition:scale
+>
   {#each activities as activity}
     <div
       class="flex flex-row gap-4 w-lg p-1.5 rounded-sm border-2 border-indigo-700 dark:border-salt-blue text-black dark:text-amber-50 bg-gray-300 dark:bg-gray-800 ml-0.5"

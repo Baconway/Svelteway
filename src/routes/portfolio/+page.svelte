@@ -25,13 +25,17 @@
 {/snippet}
 
 <title>Portfolio</title>
-<div class="ml-5 flex flex-row gap-5 justify-center">
+<div
+  class="ml-5 flex flex-row not-md:flex-col gap-5 not-md:mt-5 justify-center"
+>
   <div class="flex flex-col justify-center items-center gap-5 grow-1 h-min">
     <p class="text-3xl font-bold dark:text-white">What I Know:</p>
     {@render infoBlock("know")}
   </div>
 
-  <div class="h-[60vh] w-[1px] bg-black dark:bg-amber-100"></div>
+  <div
+    class="h-[60vh] w-[1px] bg-black dark:bg-amber-100 not-md:w-[95vw] not-md:h-[1px]"
+  ></div>
 
   <div class="flex flex-col justify-center items-center gap-5 grow-1 h-min">
     <p class="text-3xl font-bold dark:text-white">
