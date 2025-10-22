@@ -29,7 +29,13 @@
   class="ml-5 flex flex-row not-md:flex-col gap-5 not-md:mt-5 justify-center"
 >
   <div class="flex flex-col justify-center items-center gap-5 grow-1 h-min">
-    <p class="text-3xl font-bold dark:text-white">What I Know:</p>
+    <p
+      class="text-3xl font-bold dark:text-white
+    not-md:text-xl
+    "
+    >
+      What I Know:
+    </p>
     {@render infoBlock("know")}
   </div>
 
@@ -38,7 +44,10 @@
   ></div>
 
   <div class="flex flex-col justify-center items-center gap-5 grow-1 h-min">
-    <p class="text-3xl font-bold dark:text-white">
+    <p
+      class="text-3xl font-bold dark:text-white
+    not-md:text-xl"
+    >
       Stuff I Work On/Groups I Work For:
     </p>
     {@render infoBlock("project")}
