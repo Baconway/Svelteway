@@ -17,7 +17,7 @@
 >
   <div
     class="flex flex-col dark:text-white text-black w-2xl
-  not-md:justify-center not-md:items-center not-md:w-lg
+  not-md:justify-center not-md:items-center not-md:w-md
   "
   >
     <p class="text-8xl font-bold">Welcome!</p>
