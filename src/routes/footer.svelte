@@ -8,7 +8,7 @@
 
 <!--overlaps with avatar, might wanna make it collapse if height isnt a certain amount-->
 <div
-  class="fixed bottom-0 flex flex-col justify-center items-start w-[80vw] z-1 bg-black/10 backdrop-blur-sm {visible
+  class="fixed bottom-0 flex flex-col justify-center items-start w-[80vw] z-1 {visible
     ? 'pb-1'
     : ''}"
 >
