@@ -44,4 +44,10 @@
       >
     {/each}
   </div>
+
+  <img
+    class="object-contain w-2xl"
+    src="https://cow.flaz.ing"
+    alt="la creatura"
+  />
 </div>
