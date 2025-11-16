@@ -40,9 +40,18 @@
       class="flex flex-row gap-4 w-lg p-1.5 rounded-sm border-2 border-indigo-700 dark:border-salt-blue text-black dark:text-amber-50 bg-gray-300 dark:bg-gray-800 ml-0.5"
     >
       <div class="relative">
-        {@render activityBoxImage("large", activity)}
-        {#if activity.assets.small_image}
-          {@render activityBoxImage("small", activity)}
+        {#if activity.assets}
+          {@render activityBoxImage("large", activity)}
+          {#if activity.assets.small_image}
+            {@render activityBoxImage("small", activity)}
+          {/if}
+        {:else}
+          <img
+            class="w-[75px] rounded-md"
+            alt="activityPlaceholder"
+            src="/salt.png"
+            title="i dont have an image for this lmao"
+          />
         {/if}
       </div>
 

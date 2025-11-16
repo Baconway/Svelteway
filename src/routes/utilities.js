@@ -16,7 +16,7 @@ export function cleanUpActivities(activities, needsCustom) {
   let cleaned = [];
   for (let index = 0; index < activities.length; index++) {
     const element = activities[index];
-
+    console.log(element);
     if (needsCustom) {
       if (element.id == "custom") {
         return element;
