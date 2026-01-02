@@ -33,7 +33,7 @@
 
     {
       "Title": "Other Languages",
-      "Image": ["/py.svg"]
+      "Image": ["/py.svg", "/cpp.svg"]
     }
   ]
 }
