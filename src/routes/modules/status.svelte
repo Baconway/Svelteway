@@ -1,14 +1,20 @@
 <script lang="js">
   let c = $state(null);
 
-  $effect(async (params) => {
+  async function GetStatus() {
     const response = await fetch(
-      "https://api.lanyard.rest/v1/users/714482641134551071"
+      "https://api.lanyard.rest/v1/users/714482641134551071",
     );
 
     const data = await response.json();
     c = data.data.discord_status;
-  });
+  }
+
+  $effect(GetStatus());
+
+  setInterval(() => {
+    GetStatus();
+  }, 5000);
 </script>
 
 {#if !c}
@@ -22,6 +28,10 @@
 {:else if c == "online"}
   <div
     class="rounded-4xl border-black not-dark:border-amber-50 border-10 w-16 h-16 absolute -bottom-5 -right-7 bg-green-500"
+  ></div>
+{:else if c == "idle"}
+  <div
+    class="rounded-4xl border-black not-dark:border-amber-50 border-10 w-16 h-16 absolute -bottom-5 -right-7 bg-yellow-300"
   ></div>
 {:else if c == "offline"}
   <div
