@@ -97,7 +97,7 @@ export async function POST({ request }) {
 }
 
 export async function GET({}) {
-  const data = await fs.readFileSync("src/routes/api/login.js/test.js");
+  const data = await fs.readFileSync("./src/routes/api/login.js/test.js");
   return new Response(data, {
     status: 200,
     statusText: "Sending over raw token fetch",
