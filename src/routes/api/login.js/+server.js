@@ -1,5 +1,5 @@
 import { json } from "@sveltejs/kit";
-import fs from "fs";
+import { read } from "$app/server";
 import test from "./test.js?raw";
 import { error } from "console";
 
@@ -14,24 +14,11 @@ function ProcessCookie(blob) {
     return matched[1];
   }
 }
-const CORS_HEADERS = {
-  "Access-Control-Allow-Origin": "https://lng-tgk-aime-gw.am-all.net",
-  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
-  "Access-Control-Allow-Private-Network": "true",
-  "Access-Control-Allow-Credentials": "true",
-};
-
-// This handles the browser's "pre-check"
-export function OPTIONS() {
-  return new Response(null, {
-    headers: CORS_HEADERS,
-  });
-}
 
 export async function POST({ request }) {
   // learnt everything from tomomai repo: https://github.com/shedaniel/tomomai/blob/main/src/server/services/maimai-login.ts#L342
-  const { login_mode, sid, password, cookies } = await request.json();
+  const { login_mode, sid, password, cookies, redirectLink } =
+    await request.json();
 
   const checkStatus = await fetch(checkPageUrl, {
     method: "GET",
@@ -80,14 +67,28 @@ export async function POST({ request }) {
       );
     }
   } else if (login_mode === "token") {
-    console.log(login_mode, cookies);
+    const cook = ProcessCookie(cookies);
+
+    const req = await fetch(checkPageUrl, {
+      // look for 302
+      method: "GET",
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Mobile Safari/537.36",
+        Cookie: `clal=${cook}`,
+      },
+
+      redirect: "manual",
+    });
+
+    console.log(req);
 
     return new Response(JSON.stringify({ entry: "idqijdqjdiq" }), {
       status: 200,
       statusText: "OK",
       headers: {
-        ...OPTIONS(),
-
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
         "Content-Type": "application/json",
       },
     });
@@ -97,8 +98,9 @@ export async function POST({ request }) {
 }
 
 export async function GET({}) {
-  const data = await fs.readFileSync("./src/routes/api/login.js/test.js");
-  return new Response(data, {
+  const data = await read("/src/routes/api/login.js/test.js");
+
+  return new Response(await data.text(), {
     status: 200,
     statusText: "Sending over raw token fetch",
     headers: {
