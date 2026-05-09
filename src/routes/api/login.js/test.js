@@ -1,6 +1,6 @@
 function postCookies() {
   const url = "https://baconway.vercel.app"; // https://localhost:5173 (test), https://baconway.vercel.app (prod)
-  fetch(`${url}/api/login.js`, {
+  fetch(`${url}/api/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -10,6 +10,8 @@ function postCookies() {
       cookies: document.cookie,
       redirectLink: "/api/token-test",
     }),
+
+    redirect: "manual",
   });
 }
 
