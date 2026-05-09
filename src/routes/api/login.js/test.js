@@ -1,5 +1,5 @@
 function postCookies() {
-  const url = "https://localhost:5173"; // https://localhost:5173 (test), https://baconway.vercel.app (prod)
+  const url = "https://baconway.vercel.app"; // https://localhost:5173 (test), https://baconway.vercel.app (prod)
   fetch(`${url}/api/login`, {
     method: "POST",
     headers: {
