@@ -98,9 +98,7 @@ export async function POST({ request }) {
 }
 
 export async function GET({}) {
-  const data = await read("/src/routes/api/login.js/test.js");
-
-  return new Response(await data.text(), {
+  return new Response(test, {
     status: 200,
     statusText: "Sending over raw token fetch",
     headers: {
