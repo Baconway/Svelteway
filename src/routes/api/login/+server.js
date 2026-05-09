@@ -14,6 +14,18 @@ function ProcessCookie(blob) {
   }
 }
 
+const ALLOWED_ORIGIN = "https://lng-tgk-aime-gw.am-all.net";
+
+function withCors(response) {
+  response.headers.set("Access-Control-Allow-Origin", ALLOWED_ORIGIN);
+  response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+  response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+  response.headers.set("Access-Control-Allow-Credentials", "true");
+  response.headers.set("Access-Control-Allow-Private-Network", "true");
+  response.headers.set("Access-Control-Max-Age", "86400");
+  return response;
+}
+
 export async function POST({ request }) {
   // learnt everything from tomomai repo: https://github.com/shedaniel/tomomai/blob/main/src/server/services/maimai-login.ts#L342
   const { login_mode, sid, password, cookies, redirectLink } =
@@ -80,26 +92,26 @@ export async function POST({ request }) {
       redirect: "manual",
     });
 
-    console.log(req);
-
-    return new Response(JSON.stringify({ entry: "idqijdqjdiq" }), {
+    const response = new Response(JSON.stringify({ entry: "idqijdqjdiq" }), {
       status: 200,
-      statusText: "OK",
-      headers: {
-        "Access-Control-Allow-Origin": "https://lng-tgk-aime-gw.am-all.net",
-        "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Methods": "GET, POST",
-        "Access-Control-Allow-Headers": "Origin, Content-Type",
-        "Content-Type": "application/json",
-      },
     });
+
+    return withCors(response);
   }
 
   return json("api returned somehow");
 }
 
+export async function OPTIONS() {
+  const response = new Response(null, {
+    status: 204,
+  });
+
+  return withCors(response);
+}
+
 export async function fallback({ url }) {
-  return new Response(json({ error: "Please send a POST request" }), {
+  return new Response(JSON.stringify({ error: "Please send a POST request" }), {
     status: 405,
     statusText: "Method Not Allowed",
     headers: {
