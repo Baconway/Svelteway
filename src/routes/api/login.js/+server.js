@@ -87,8 +87,10 @@ export async function POST({ request }) {
       status: 200,
       statusText: "OK",
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://lng-tgk-aime-gw.am-all.net",
         "Access-Control-Allow-Credentials": true,
+        "Access-Control-Allow-Methods": "GET, POST",
+        "Access-Control-Allow-Headers": "Origin, Content-Type",
         "Content-Type": "application/json",
       },
     });
