@@ -9,7 +9,7 @@
 </script>
 
 <title>Home Page</title>
-
+<!--
 <div
   class="flex justify-center items-center gap-65 mt-50
   not-md:gap-10 not-md:flex-col
@@ -59,3 +59,4 @@
     </div>
   </div>
 </div>
+-->
