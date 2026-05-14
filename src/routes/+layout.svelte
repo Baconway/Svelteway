@@ -61,22 +61,43 @@
   <track kind="captions" />
 </video>
 
-<div
-  class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 flex flex-col align-top h-3/4 py-10 {miniMenuVisible
-    ? 'w-0'
-    : 'w-2/3'} duration-200 transition-all"
->
-  <div class="bg-blue-300">aaaaaa</div>
-  <button onclick={() => (miniMenuVisible = !miniMenuVisible)}
-    >View Full Profile</button
+<div class="flex justify-center-safe items-center w-screen h-screen">
+  <div
+    class="flex relative shrink-0 z-10 rounded-lg bg-green-500 p-20 {miniMenuVisible
+      ? 'invisible'
+      : ''}"
   >
-  <div></div>
-  <div></div>
-  <button
-    class="absolute top-5 right-5 w-6 h-6 cursor-pointer"
-    onclick={() => (miniMenuVisible = !miniMenuVisible)}><CloseIcon /></button
-  >
+    <button
+      class="absolute top-5 right-5 w-6 h-6 cursor-pointer {miniMenuVisible
+        ? 'hidden'
+        : ''}"
+      onclick={() => (miniMenuVisible = !miniMenuVisible)}><CloseIcon /></button
+    >
+
+    <div class="max-w-1/4 z-20 visible bg-blue-300 flex flex-col">
+      <div class="">
+        <img class="w-2/3" src="/plate.png" alt="banner" />
+        <img src="/salt.png" alt="pfp" />
+      </div>
+      <div class="px-10 py-5">
+        <div>
+          <p class="inline">Display Name</p>
+          <p class="inline">username &bull; pronouns</p>
+        </div>
+        <button
+          class="border-2 border-amber-500"
+          onclick={() => (miniMenuVisible = !miniMenuVisible)}
+          >View Full Profile</button
+        >
+      </div>
+    </div>
+    <div>
+      <div class="bg-blue-400">aaa</div>
+      <div class="bg-emerald-600">aaaa</div>
+    </div>
+  </div>
 </div>
+
 <!--
 {#if miniMenuVisible}
   <div
