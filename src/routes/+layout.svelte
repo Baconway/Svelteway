@@ -61,39 +61,34 @@
   <track kind="captions" />
 </video>
 
-<div class="flex justify-center-safe items-center w-screen h-screen">
-  <div
-    class="flex relative shrink-0 z-10 rounded-lg bg-green-500 p-20 {miniMenuVisible
-      ? 'invisible'
-      : ''}"
-  >
-    <button
-      class="absolute top-5 right-5 w-6 h-6 cursor-pointer {miniMenuVisible
-        ? 'hidden'
-        : ''}"
-      onclick={() => (miniMenuVisible = !miniMenuVisible)}><CloseIcon /></button
-    >
-
-    <div class="max-w-1/4 z-20 visible bg-blue-300 flex flex-col">
-      <div class="">
-        <img class="w-2/3" src="/plate.png" alt="banner" />
-        <img src="/salt.png" alt="pfp" />
+<div class="flex justify-center items-center fixed w-screen h-screen">
+  <div class="flex flex-row gap-2">
+    <div class=" bg-blue-500 pb-6">
+      <div class="relative">
+        <img
+          class="relative w-[340px] h-[120px] object-cover object-bottom"
+          src="/frame.png"
+          alt="banner"
+        /><img
+          class="absolute w-[128px] z-10 left-1 top-1/2 border-4 border-blue-500 rounded-full"
+          src="/test.webp"
+          alt="pfp"
+        />
       </div>
-      <div class="px-10 py-5">
+
+      <div class="px-2 mt-[70px] text-white">
+        <p>Display Name</p>
+        <p>username &bull; pronouns</p>
+        <p>Time currently: 1:25 AM, 5/15/2026</p>
         <div>
-          <p class="inline">Display Name</p>
-          <p class="inline">username &bull; pronouns</p>
+          <p>Connections</p>
         </div>
-        <button
-          class="border-2 border-amber-500"
-          onclick={() => (miniMenuVisible = !miniMenuVisible)}
-          >View Full Profile</button
-        >
       </div>
     </div>
-    <div>
-      <div class="bg-blue-400">aaa</div>
-      <div class="bg-emerald-600">aaaa</div>
+
+    <div class="flex flex-col gap-5">
+      <div class="w-lg h-30 bg-emerald-500">{@render children()}</div>
+      <div class="w-lg h-30 bg-emerald-500"><p>cccccc</p></div>
     </div>
   </div>
 </div>
@@ -137,4 +132,3 @@
 
 <Footer></Footer>
 -->
-{@render children()}
