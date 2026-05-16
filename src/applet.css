@@ -3,11 +3,24 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
+  --color-shiroko-1: rgb(36, 41, 64);
+  --color-shiroko-2: rgb(110, 253, 255);
+  --color-shiroko-3: rgb(202, 253, 36);
+  --color-shiroko-4: rgb(15, 14, 19);
+  --color-shiroko-5: rgb(73, 73, 87);
+  --color-salt-1: rgb(206, 255, 255);
+  --color-salt-2: rgb(214, 140, 123);
+  --color-salt-3: rgb(16, 181, 247);
+  --color-salt-4: rgb(0, 0, 0);
+  --color-salt-5: rgb(132, 16, 0);
+}
+
+/*@theme {
   --animate-rainbow: rainbow 4.5s ease-in-out infinite;
   --color-salt-blue: #30a6d7;
 
   @keyframes rainbow {
-    /*create keyframes to make animations*/
+    create keyframes to make animations
     12.5% {
       color: red;
     }
@@ -34,3 +47,4 @@
     }
   }
 }
+*/

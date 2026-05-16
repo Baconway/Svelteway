@@ -1,0 +1,15 @@
+{
+  "connections": [
+    {
+      "image": "/youtube.svg",
+      "link": "https://www.youtube.com/@Baconway",
+      "caption": "Baconway"
+    },
+
+    {
+      "image": "/github.svg",
+      "link": "https://github.com/Baconway",
+      "caption": "Baconway"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "template_name": "Display Name",
+  "template_avatar": "/icon_notfound.png",
+  "template_banner": "/frame_notfound.png",
+
+  "default_timezone": "Asia/Ho_Chi_Minh",
+  "default_format": "dddd, Do MMMM YYYY『z』",
+  "default_status": "offline"
+}

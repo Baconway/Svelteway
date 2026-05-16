@@ -24,6 +24,9 @@
 	"dependencies": {
 		"@iconify-svelte/material-symbols": "^1.0.31",
 		"@tailwindcss/vite": "^4.1.11",
+		"colorthief": "^3.3.1",
+		"dayjs": "^1.11.20",
+		"sharp": "^0.34.5",
 		"tailwindcss": "^4.1.11"
 	}
 }

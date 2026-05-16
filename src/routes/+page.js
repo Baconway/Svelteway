@@ -6,7 +6,7 @@ export async function load({ params }) {
     "https://api.lanyard.rest/v1/users/714482641134551071",
   );
   const data = await response.json();
-  console.log(data);
+
   let av_link = `https://cdn.discordapp.com/avatars/${data.data.discord_user.id}/${data.data.discord_user.avatar}.webp?size=256`;
   return {
     avatar: av_link,

@@ -5,6 +5,7 @@
   let miniMenuVisible = $state(false);
   import "../applet.css";
   import Footer from "./footer.svelte";
+  import Connections from "./modules/connections.svelte";
 
   function themeChange(theme) {
     if (document.documentElement.className == "dark") {
@@ -14,42 +15,6 @@
     }
   }
 </script>
-
-<!--<nav
-  class="flex border-4 dark:border-amber-50 border-b-gray-900 text-[25px] pl-3 m-5 sticky top-0 justify-between items-center bg-amber-50 dark:bg-black rounded-xl
-   not-md:hidden"
->
-  <div class="flex gap-1 basis-0 grow">
-    <a class="p-2 dark:text-white text-black" href="/">Home</a>
-    <a class="p-2 dark:text-white text-black" href="/portfolio">Portfolio</a>
-    <a class="p-2 dark:text-white text-black" href="/extras">Extras</a>
-  </div>
-
-  <div class="flex justify-center grow-1">
-    <img class="dark:invert-100 w-40" src="/logo.png" alt="logo here" />
-  </div>
-
-  <div class="flex grow basis-0 items-end justify-end pr-2">
-    <img
-      class="max-w-[1.75em] pr-1 hover:cursor-pointer pl-0.5 dark:invert object-center"
-      onclick={() => themeChange()}
-      id="switch-theme"
-      src="/themeSwitch.svg"
-      alt="theme switching button"
-    />
-  </div>
-</nav>
-
-<nav
-  class="fixed top-3 left-2 rounded-4xl w-12 h-12 border-2 dark:border-amber-50 md:hidden z-3"
->
-  <img
-    class="dark:invert p-1"
-    src="/menu.svg"
-    alt="hamburger"
-    onclick={() => (miniMenuVisible = !miniMenuVisible)}
-  />
-</nav>-->
 
 <video
   class="fixed inset-0 min-w-screen min-h-screen opacity-40 loop object-right"
@@ -63,72 +28,49 @@
 
 <div class="flex justify-center items-center fixed w-screen h-screen">
   <div class="flex flex-row gap-2">
-    <div class=" bg-blue-500 pb-6">
+    <div
+      style="background-image: linear-gradient({data.palette[0]}, {data
+        .palette[1]});"
+      class="flex flex-col bg-linear-to-br rounded-md p-1"
+    >
       <div class="relative">
         <img
-          class="relative w-[340px] h-[120px] object-cover object-bottom"
-          src="/frame.png"
+          class="relative w-[340px] h-[120px] object-cover object-bottom rounded-t-sm"
+          src={data.banner}
           alt="banner"
-        /><img
-          class="absolute w-[128px] z-10 left-1 top-1/2 border-4 border-blue-500 rounded-full"
-          src="/test.webp"
+        />
+
+        <img
+          class="absolute w-[128px] z-10 left-2 top-1/2 border-4 border-shiroko-1 rounded-full"
+          src={data.avatar}
           alt="pfp"
         />
       </div>
 
-      <div class="px-2 mt-[70px] text-white">
-        <p>Display Name</p>
-        <p>username &bull; pronouns</p>
-        <p>Time currently: 1:25 AM, 5/15/2026</p>
-        <div>
-          <p>Connections</p>
+      <div class="bg-shiroko-1 border-salt-1 pb-6 rounded-b-sm">
+        <div class="px-2.5 mt-[72px] text-white text-sm">
+          <p>{data.display_name}</p>
+          <p>{data.username} &bull; I exist</p>
+          <p class="my-5">Current Time: {data.date}</p>
+          <div class="flex flex-col gap-2 mb-4">
+            <p class="font-bold">Connections</p>
+            <Connections />
+          </div>
+          <div class="flex flex-row gap-2">
+            <button
+              style="background-color: {data.palette[2]};"
+              class="grow-1 p-2 items-center-safe rounded-xl text-md cursor-pointer"
+              >Example Button &raquo;</button
+            >
+          </div>
         </div>
       </div>
     </div>
 
     <div class="flex flex-col gap-5">
-      <div class="w-lg h-30 bg-emerald-500">{@render children()}</div>
-      <div class="w-lg h-30 bg-emerald-500"><p>cccccc</p></div>
+      <div class=" bg-emerald-500">{@render children()}</div>
     </div>
   </div>
 </div>
 
-<!--
-{#if miniMenuVisible}
-  <div
-    class="absolute top-0 bottom-0 left-0 right-0 mt-10 bg-black/10 backdrop-blur-xs z-2 duration-75"
-    transition:fade
-  >
-    <div class="flex flex-col justify-center items-center gap-2">
-      <div
-        class="w-xs bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue flex justify-center"
-      >
-        <img class="dark:invert-100 w-40" src="/logo.png" alt="logo here" />
-      </div>
-
-      <a
-        class="w-xs text-center bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue p-2 dark:text-white text-black"
-        href="/">Home</a
-      >
-      <a
-        class="w-xs text-center bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue p-2 dark:text-white text-black"
-        href="/portfolio">Portfolio</a
-      >
-      <a
-        class="w-xs text-center bg-gray-400 dark:bg-gray-800 border-2 border-indigo-700 dark:border-salt-blue p-2 dark:text-white text-black"
-        href="/extras">Extras</a
-      >
-
-      <img
-        class="max-w-[2.15rem] pr-1 hover:cursor-pointer pl-0.5 dark:invert object-center"
-        onclick={() => themeChange()}
-        id="switch-theme"
-        src="/themeSwitch.svg"
-        alt="theme switching button"
-      />
-    </div>
-  </div>
-{/if}
-
 <Footer></Footer>
--->
