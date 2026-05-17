@@ -62,7 +62,7 @@ async function GetLanyardData() {
 
 export async function load() {
   return {
-    ...(await GetLanyardData()),
+    profileData: await GetLanyardData(),
     vid: video,
     audio: audio,
   };

@@ -22,7 +22,7 @@
 		"vite-plugin-mkcert": "^2.0.0"
 	},
 	"dependencies": {
-		"@iconify-svelte/material-symbols": "^1.0.31",
+		"@iconify-svelte/lsicon": "^1.0.2",
 		"@tailwindcss/vite": "^4.1.11",
 		"colorthief": "^3.3.1",
 		"dayjs": "^1.11.20",

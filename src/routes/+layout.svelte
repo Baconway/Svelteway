@@ -1,11 +1,16 @@
 <script>
-  import CloseIcon from "@iconify-svelte/material-symbols/close-rounded";
-  import { fade } from "svelte/transition";
-  let { children, data } = $props();
-  let miniMenuVisible = $state(false);
+  import CloseIcon from "@iconify-svelte/lsicon/close-small-outline";
+  import Window_max from "@iconify-svelte/lsicon/shell-window-maximize-outline";
+  import Window_min from "@iconify-svelte/lsicon/shell-window-minimize-outline";
+  import { fade, slide, scale, draw } from "svelte/transition";
+  import { onMount } from "svelte";
+
   import "../applet.css";
-  import Footer from "./footer.svelte";
-  import Connections from "./modules/connections.svelte";
+  import Footer from "$modules/footer.svelte";
+  import Connections from "$modules/connections.svelte";
+  import Profile from "$modules/profile.svelte";
+  import { changeVisibility, getVisibility } from "$modules/state.svelte.js";
+  let { children, data } = $props();
 
   function themeChange(theme) {
     if (document.documentElement.className == "dark") {
@@ -27,49 +32,44 @@
 </video>
 
 <div class="flex justify-center items-center fixed w-screen h-screen">
-  <div class="flex flex-row gap-2">
-    <div
-      style="background-image: linear-gradient({data.palette[0]}, {data
-        .palette[1]});"
-      class="flex flex-col bg-linear-to-br rounded-md p-1"
-    >
-      <div class="relative">
-        <img
-          class="relative w-[340px] h-[120px] object-cover object-bottom rounded-t-sm"
-          src={data.banner}
-          alt="banner"
-        />
+  <div
+    class="flex flex-row gap-2 duration-200 drop-shadow-sm drop-shadow-black"
+  >
+    <Profile profileData={data.profileData} />
 
-        <img
-          class="absolute w-[128px] z-10 left-2 top-1/2 border-4 border-shiroko-1 rounded-full"
-          src={data.avatar}
-          alt="pfp"
-        />
-      </div>
-
-      <div class="bg-shiroko-1 border-salt-1 pb-6 rounded-b-sm">
-        <div class="px-2.5 mt-[72px] text-white text-sm">
-          <p>{data.display_name}</p>
-          <p>{data.username} &bull; I exist</p>
-          <p class="my-5">Current Time: {data.date}</p>
-          <div class="flex flex-col gap-2 mb-4">
-            <p class="font-bold">Connections</p>
-            <Connections />
+    {#if getVisibility()}
+      <div
+        class="flex flex-col drop-shadow-sm drop-shadow-black"
+        transition:scale
+      >
+        <div
+          class="flex flex-row bg-shiroko-2 px-0.5 pb-1 justify-between items-center"
+        >
+          <div class="flex flex-row items-center justify-center">
+            <img class="w-7 h-7" src="/shiroko.gif" alt="icon" />
+            <p>Information</p>
           </div>
-          <div class="flex flex-row gap-2">
+
+          <div class="flex">
             <button
-              style="background-color: {data.palette[2]};"
-              class="grow-1 p-2 items-center-safe rounded-xl text-md cursor-pointer"
-              >Example Button &raquo;</button
+              class="px-1 border-t-0 border-2 border-shiroko-5 rounded-bl-md"
+              ><Window_min width="24px" height="24px" /></button
+            >
+            <button class="px-1 border-l-0 border-t-0 border-2 border-shiroko-5"
+              ><Window_max width="24px" height="24px" /></button
+            >
+            <button
+              class="px-3 border-l-0 border-2 border-shiroko-5 border-t-0 rounded-br-md bg-red-400"
+              onclick={() => changeVisibility()}
+              ><CloseIcon width="24px" height="24px" /></button
             >
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="flex flex-col gap-5">
-      <div class=" bg-emerald-500">{@render children()}</div>
-    </div>
+        <div class="relative w-xl h-1/3 p-1 bg-emerald-500">
+          {@render children()}
+        </div>
+      </div>{/if}
   </div>
 </div>
 
