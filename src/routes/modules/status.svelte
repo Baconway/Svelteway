@@ -11,10 +11,6 @@
   }
 
   $effect(GetStatus());
-
-  setInterval(() => {
-    GetStatus();
-  }, 5000);
 </script>
 
 {#if !c}

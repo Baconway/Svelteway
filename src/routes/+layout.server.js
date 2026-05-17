@@ -1,4 +1,4 @@
-import { USERID } from "$env/static/private";
+import { PUBLIC_USERID } from "$env/static/public";
 
 import dayJS from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -10,9 +10,10 @@ import { getPalette } from "colorthief";
 import {
   template_avatar,
   template_banner,
+  default_status,
   default_timezone,
   default_format, //see format list: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-} from "$lib/defaults/defaultProfile.json";
+} from "$lib/defaults/defaults.json";
 
 import video from "$lib/video/fragrance.mp4";
 import audio from "$lib/audio/fragrance.mp3";
@@ -21,10 +22,6 @@ import audio from "$lib/audio/fragrance.mp3";
 dayJS.extend(utc);
 dayJS.extend(timezone);
 dayJS.extend(advanedFormat);
-
-// load profile data
-const currentDay = dayJS().tz(default_timezone).format(default_format);
-const PaletteOptions = { colorCount: 3 };
 
 async function ExtractColorPalette(source) {
   const returningPalette = await getPalette(source, PaletteOptions);
@@ -35,8 +32,14 @@ async function ExtractColorPalette(source) {
   return hexPalette;
 }
 
+// load profile data
+const currentDay = dayJS().tz(default_timezone).format(default_format);
+const PaletteOptions = { colorCount: 3 };
+
 async function GetLanyardData() {
-  let response = await fetch(`https://api.lanyard.rest/v1/users/${USERID}`);
+  let response = await fetch(
+    `https://api.lanyard.rest/v1/users/${PUBLIC_USERID}`,
+  );
   response = await response.json();
 
   if (!response.success) {
@@ -45,6 +48,7 @@ async function GetLanyardData() {
       username: "username",
       avatar: template_avatar,
       banner: template_banner,
+      status: default_status,
       date: currentDay,
       palette: await ExtractColorPalette(`./static/${template_banner}`),
     };
@@ -55,6 +59,9 @@ async function GetLanyardData() {
     username: response.data.discord_user.username,
     avatar: `https://cdn.discordapp.com/avatars/${response.data.discord_user.id}/${response.data.discord_user.avatar}.webp?size=256`,
     banner: "/frame.png",
+    badge: `https://cdn.discordapp.com/guild-tag-badges/${response.data.discord_user.primary_guild.identity_guild_id}/${response.data.discord_user.primary_guild.badge}.png`,
+    guild_tag: response.data.discord_user.primary_guild.tag,
+    status: response.data.discord_status,
     date: currentDay,
     palette: await ExtractColorPalette(`./static/frame.png`),
   };

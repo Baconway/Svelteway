@@ -3,7 +3,7 @@
   let { data } = $props();
   let canSeeBubble = $state(false);
 
-  import Status from "./modules/status.svelte";
+  //import Status from "./modules/status.svelte";
   import Info from "./modules/info.svelte";
   import { fade, scale, slide } from "svelte/transition";
 </script>

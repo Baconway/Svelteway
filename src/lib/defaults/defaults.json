@@ -5,5 +5,12 @@
 
   "default_timezone": "Asia/Ho_Chi_Minh",
   "default_format": "dddd, Do MMMM YYYY『z』",
-  "default_status": "offline"
+  "default_status": "offline",
+
+  "defaultStatusColors": {
+    "online": "#57F287",
+    "idle": "#FEE75C",
+    "dnd": "#ED4245",
+    "offline": "#747F8D"
+  }
 }
