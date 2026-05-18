@@ -1,56 +1,38 @@
 <script>
-  import { slide, fade } from "svelte/transition";
-  import portfolioPaths from "../jsonPaths/portfolio.json";
+  import { Languages, Development_Platforms } from "$lib/jsons/portfolio.json";
+  import { fade, scale, slide } from "svelte/transition";
 </script>
 
-{#snippet infoBlock(side)}
-  {#each portfolioPaths[side] as parts}
-    <a
-      class={parts.Link ? "hover:cursor-pointer" : "hover:cursor-not-allowed"}
-      href={parts.Link}
-      target="_blank"
-    >
-      <div
-        class="flex flex-row justify-between items-center w-lg dark:text-white bg-gray-300 dark:bg-gray-800 ml-0.5 rounded-lg p-2.5 border-1 border-indigo-700 dark:border-salt-blue
-        not-md:w-md"
-      >
-        <p class="font-bold text-lg">{parts.Title}</p>
-        <div class="flex flex-wrap gap-2">
-          {#each parts.Image as ImagePath}
-            <img class="h-[43px] rounded-sm" alt="a" src={ImagePath} />
-          {/each}
-        </div>
-      </div></a
-    >
-  {/each}
-{/snippet}
-
-<title>Portfolio</title>
-<div
-  class="ml-5 flex flex-row not-md:flex-col gap-5 not-md:mt-5 justify-center"
->
-  <div class="flex flex-col justify-center items-center gap-5 grow-1 h-min">
-    <p
-      class="text-3xl font-bold dark:text-white
-    not-md:text-xl
-    "
-    >
-      What I Know:
-    </p>
-    {@render infoBlock("know")}
+<div class="flex flex-col gap-2 p-2.5" transition:slide>
+  <div
+    class="flex flex-col gap-4 p-5 bg-shiroko-5 border-2 border-salt-1 rounded-lg overflow-auto"
+  >
+    <p class="text-2xl font-extrabold">Programming Languages</p>
+    <div class="flex flex-wrap items-start gap-2">
+      {#each Languages as lang}
+        <img
+          class="w-12 h-12"
+          src={lang.link}
+          alt="{lang.lang} logo"
+          title={lang.title}
+        />
+      {/each}
+    </div>
   </div>
 
   <div
-    class="h-[60vh] w-[1px] bg-black dark:bg-amber-100 not-md:w-[95vw] not-md:h-[1px]"
-  ></div>
-
-  <div class="flex flex-col justify-center items-center gap-5 grow-1 h-min">
-    <p
-      class="text-3xl font-bold dark:text-white
-    not-md:text-xl"
-    >
-      Stuff I Work On/Groups I Work For:
-    </p>
-    {@render infoBlock("project")}
+    class="flex flex-col gap-4 p-5 bg-shiroko-5 border-2 border-salt-1 rounded-lg"
+  >
+    <p class="text-2xl font-extrabold">Development Platforms</p>
+    <div class="flex flex-wrap items-start gap-2">
+      {#each Development_Platforms as platform}
+        <img
+          class="w-12 h-12"
+          src={platform.link}
+          alt="{platform.platform} logo"
+          title={platform.title}
+        />
+      {/each}
+    </div>
   </div>
 </div>

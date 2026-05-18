@@ -1,5 +1,5 @@
 <script>
-  import { connections } from "$lib/defaults/connections.json";
+  import { connections } from "$lib/jsons/connections.json";
 </script>
 
 {#each connections as connectionBlock}

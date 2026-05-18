@@ -1,13 +1,11 @@
 <script>
-  import { PUBLIC_USERID } from "$env/static/public";
+  import { PUBLIC_USERID, PUBLIC_GUILD_INVITE } from "$env/static/public";
 
   import Connections from "$modules/connections.svelte";
-  import { defaultStatusColors } from "$lib/defaults/defaults.json";
+  import { defaultStatusColors } from "$lib/jsons/defaults.json";
   import { changeVisibility, getVisibility } from "$modules/state.svelte.js";
 
-  let status = $state("gray");
-
-  const StatusSocket = new WebSocket("wss://api.lanyard.rest/socket");
+  /*const StatusSocket = new WebSocket("wss://api.lanyard.rest/socket");
   StatusSocket.addEventListener("message", (event) => {
     const socketResponse = JSON.parse(event.data);
 
@@ -34,7 +32,7 @@
 
       return;
     }
-  });
+  });*/
 
   let data = $props();
 </script>
@@ -42,33 +40,33 @@
 <div
   style="background-image: linear-gradient({data.profileData.palette[0]}, {data
     .profileData.palette[1]});"
-  class="flex flex-col bg-linear-to-br rounded-md p-1 duration-300"
+  class=" self-start flex flex-col bg-linear-to-br rounded-md p-1 duration-300"
   transition:slide={{ axis: "x" }}
 >
   <div class="relative">
     <img
-      class="relative w-[340px] h-[120px] object-cover object-bottom rounded-t-sm"
+      class="relative w-85 h-30 object-cover object-bottom rounded-t-sm"
       src={data.profileData.banner}
       alt="banner"
     />
 
     <img
-      style="border-color: {status};"
-      class="absolute w-[128px] z-10 left-2 top-1/2 border-4 rounded-full"
+      style="border-color: {defaultStatusColors[data.profileData.status]};"
+      class="absolute w-32 z-10 left-2 top-1/2 border-4 rounded-full"
       src={data.profileData.avatar}
       alt="pfp"
     />
   </div>
 
   <div class="bg-shiroko-1 border-salt-1 pb-6 rounded-b-sm font-[Google_Sans]">
-    <div class="px-2.5 mt-[72px] text-white text-sm">
+    <div class="px-2.5 mt-18 text-white text-sm">
       <p class="font-[Shippori_Mincho] text-xl">
         {data.profileData.display_name}
       </p>
       <p>{data.profileData.username} &bull; I exist</p>
       <a
         class="flex flex-row items-center justify-center w-fit px-1 mt-0.5 border-2 border-double border-shiroko-2 rounded-lg drop-shadow-md drop-shadow-shiroko-5"
-        href="https://discord.gg/GAMsRtrztP"
+        href={PUBLIC_GUILD_INVITE}
         target="_blank"
       >
         <img

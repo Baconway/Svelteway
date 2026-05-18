@@ -1,6 +1,6 @@
 <script>
   import { slide, fade } from "svelte/transition";
-  import { CopyInfo, LinkInfo } from "../jsonPaths/extraInfo.json";
+  import { CopyInfo, LinkInfo } from "$lib/jsons/games.json";
 </script>
 
 {#snippet InfoBlock(reference)}
@@ -22,10 +22,11 @@
 <title>Extras</title>
 <div
   class="ml-5 not-md:mt-8 flex flex-col justify-center items-center gap-2 not-md:mb-20"
+  transition:slide
 >
   <p class="text-2xl font-bold dark:text-white">Other Links</p>
 
-  <div class="flex flex-row gap-2 flex-wrap justify-center max-w-256">
+  <div class="flex flex-row gap-2 flex-wrap justify-center max-w-3xl">
     {#each CopyInfo as extraInfoBlock}
       <button
         class="hover:cursor-pointer"
@@ -33,21 +34,20 @@
           navigator.clipboard.writeText(extraInfoBlock.CopyItem);
           alert("Copied!");
         }}
+        title="Click on this to copy!"
       >
         {@render InfoBlock(extraInfoBlock)}</button
       >
     {/each}
 
     {#each LinkInfo as extraInfoBlock}
-      <a href={extraInfoBlock.Link} target="_blank">
+      <a
+        href={extraInfoBlock.Link}
+        target="_blank"
+        title="Click on this to head to the link!"
+      >
         {@render InfoBlock(extraInfoBlock)}</a
       >
     {/each}
   </div>
-
-  <img
-    class="object-contain w-2xl"
-    src="https://cow.flaz.ing"
-    alt="la creatura"
-  />
 </div>

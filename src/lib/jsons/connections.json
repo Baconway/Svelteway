@@ -10,6 +10,18 @@
       "image": "/github.svg",
       "link": "https://github.com/Baconway",
       "caption": "Baconway"
+    },
+
+    {
+      "image": "/roblox.svg",
+      "link": "https://www.roblox.com/users/243533657/profile",
+      "caption": "Bac0nway"
+    },
+
+    {
+      "image": "/steam.svg",
+      "link": "https://steamcommunity.com/id/baconway/",
+      "caption": "Cunnyway"
     }
   ]
 }

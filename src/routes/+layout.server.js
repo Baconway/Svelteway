@@ -13,10 +13,9 @@ import {
   default_status,
   default_timezone,
   default_format, //see format list: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-} from "$lib/defaults/defaults.json";
+} from "$lib/jsons/defaults.json";
 
 import video from "$lib/video/fragrance.mp4";
-import audio from "$lib/audio/fragrance.mp3";
 
 // extend module https://day.js.org/docs/en/plugin/plugin
 dayJS.extend(utc);
@@ -71,6 +70,5 @@ export async function load() {
   return {
     profileData: await GetLanyardData(),
     vid: video,
-    audio: audio,
   };
 }
