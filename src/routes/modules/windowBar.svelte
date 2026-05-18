@@ -10,11 +10,11 @@
 <div
   style="background-image: linear-gradient({data.palette[0]}, {data
     .palette[1]});"
-  class="flex flex-row bg-linear-to-br px-0.5 pb-1 justify-between items-center"
+  class="sticky top-0 flex flex-row w-xl pb-1 bg-linear-to-br justify-between items-center"
 >
   <div class="flex flex-row items-center justify-center">
     <img class="w-7 h-7" src="/shiroko.gif" alt="icon" />
-    <p>Information</p>
+    <p class="text-black">Information</p>
   </div>
 
   <div class="flex">
@@ -27,7 +27,7 @@
       ><Window_max width="24px" height="24px" /></button
     >
     <button
-      class="px-3 border-l-0 border-2 border-shiroko-5 border-t-0 rounded-br-md bg-red-400"
+      class="px-3 border-l-0 border-2 border-shiroko-3 border-t-0 rounded-br-md bg-red-400"
       onclick={() => changeVisibility()}
       ><CloseIcon width="24px" height="24px" /></button
     >

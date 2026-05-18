@@ -66,8 +66,10 @@
         {data.profileData.display_name}
       </p>
       <p>{data.profileData.username} &bull; I exist</p>
-      <div
-        class="flex flex-row items-center justify-center w-fit px-1 border-2 border-double border-shiroko-2 rounded-lg"
+      <a
+        class="flex flex-row items-center justify-center w-fit px-1 mt-0.5 border-2 border-double border-shiroko-2 rounded-lg drop-shadow-md drop-shadow-shiroko-5"
+        href="https://discord.gg/GAMsRtrztP"
+        target="_blank"
       >
         <img
           class="w-[14px] h-[14px] mr-0.5"
@@ -75,7 +77,7 @@
           alt="guild tag"
         />
         <p class="text-xs font-extrabold">{data.profileData.guild_tag}</p>
-      </div>
+      </a>
 
       <p class="font-bold mt-5">Current Time:</p>
       <p class="mb-5">{data.profileData.date}</p>

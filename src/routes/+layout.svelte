@@ -34,15 +34,14 @@
     class="flex flex-row gap-2 duration-200 drop-shadow-sm drop-shadow-black"
   >
     <Profile profileData={data.profileData} />
+
     {#if getVisibility()}
       <div
-        class="flex flex-col drop-shadow-sm drop-shadow-black"
-        transition:scale
+        class="relative h-auto self-stretch overflow-y-auto text-white bg-shiroko-1"
+        transition:scale={{ scale: 1 }}
       >
         <WindowBar palette={data.profileData.palette} />
-        <div class="relative w-xl h-1/3 p-1 text-white bg-shiroko-1">
-          {@render children()}
-        </div>
+        {@render children()}
       </div>
     {/if}
   </div>

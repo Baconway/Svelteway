@@ -1,63 +1,18 @@
 <script lang="js">
-  /**@type {import('./$types').PageProps}*/ //type checking for base js
-  let { data } = $props();
-  let canSeeBubble = $state(false);
-
-  //import Status from "./modules/status.svelte";
-  import Info from "./modules/info.svelte";
   import { fade, scale, slide } from "svelte/transition";
+  import { changeTitle, getTitle } from "$modules/state.svelte.js";
+  import { resolveRoute } from "$app/paths";
+  let { data } = $props();
+
+  changeTitle("Home Page");
 </script>
 
-<title>Home Page</title>
-<p>ghelldo</p>
-<!--
-<div
-  class="flex justify-center items-center gap-65 mt-50
-  not-md:gap-10 not-md:flex-col
-"
->
-  <div
-    class="flex flex-col dark:text-white text-black w-2xl
-  not-md:justify-center not-md:items-center not-md:w-md
-  "
-  >
-    <p class="text-8xl font-bold">Welcome!</p>
-    <p class="text-3xl">This is a revamped landing page.</p>
-    <p class="text-xl not-md:text-lg">
-      (Still a static Website, but I'll figure out what else to do.)
-    </p>
-    <Info></Info>
-  </div>
+<title>{getTitle()}</title>
 
-  <div class="shrink-0">
-    <div class="relative flex justify-center items-center">
-      <img
-        class="shadow-lg not-dark:shadow-indigo-700 shadow-salt-blue rounded-2xl"
-        alt="avatar img"
-        src={data.avatar}
-        onmouseenter={() => (canSeeBubble = true)}
-        onmouseleave={() => (canSeeBubble = false)}
-      />
-
-      {#if canSeeBubble}
-        <div
-          class="absolute top-70 dark:bg-gray-800 border-indigo-700 dark:border-salt-blue border-2 bg-gray-300 rounded-md p-2 text-black dark:text-white"
-          transition:scale
-        >
-          <p class="text-ellipsis font-bold w-xs wrap-break-word text-center">
-            {data.customStatus.state
-              ? data.customStatus.state
-              : "Not doing Anything"}
-          </p>
-
-          <div
-            class="absolute top-0 left-1/2 border-10 border-t-indigo-700 dark:border-t-salt-blue -mt-5 rotate-180 border-transparent"
-          ></div>
-        </div>
-      {/if}
-
-      <Status></Status>
-    </div>
-  </div>
-</div>
--->
+<p class="text-3xl">big placeholder</p>
+<ul class="list-outside list-disc pl-5">
+  <li class="">placeholder</li>
+  <li><a href={resolveRoute("/portfolio")}>placeholder</a></li>
+  <li>placeholder</li>
+  <li>placeholder</li>
+</ul>
