@@ -4,7 +4,7 @@
   import Window_min from "@iconify-svelte/lsicon/shell-window-minimize-outline";
   import BackIcon from "@iconify-svelte/lsicon/arrow-left-outline";
   import { page } from "$app/state";
-  import { resolve } from "$app/paths";
+  import { resolveRoute } from "$app/paths";
 
   import { changeVisibility, getVisibility } from "$modules/state.svelte.js";
   let data = $props();
@@ -17,7 +17,7 @@
   class="sticky top-0 flex flex-row w-full pb-1 mb-2 bg-linear-to-br justify-between items-center"
 >
   <div class="flex flex-row items-center justify-center align-middle pl-2">
-    <a href={resolve("/")}
+    <a href={resolveRoute("/")}
       ><BackIcon width="24px" height="24px" color="black" /></a
     >
     <img class="w-7 h-7" src="/shiroko.gif" alt="icon" />

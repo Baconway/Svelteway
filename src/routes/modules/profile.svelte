@@ -4,6 +4,8 @@
   import Connections from "$modules/connections.svelte";
   import { defaultStatusColors } from "$lib/jsons/defaults.json";
   import { changeVisibility, getVisibility } from "$modules/state.svelte.js";
+  import { onMount } from "svelte";
+  import { getPaletteSync } from "colorthief";
 
   /*const StatusSocket = new WebSocket("wss://api.lanyard.rest/socket");
   StatusSocket.addEventListener("message", (event) => {
@@ -33,7 +35,13 @@
       return;
     }
   });*/
-
+  let bannerImage;
+  const GetPalette = async () => {
+    //console.log(getPaletteSync(bannerImage));
+  };
+  onMount(() => {
+    GetPalette();
+  });
   let data = $props();
 </script>
 

@@ -15,7 +15,6 @@
 
   const syncWindowBody = () => {
     if (profileContainer) {
-      console.log(profileContainer.offsetHeight);
       windowBodyHeight = `${profileContainer.offsetHeight}px`;
       windowBodyWidth = `${profileContainer.offsetWidth}px`;
     }
