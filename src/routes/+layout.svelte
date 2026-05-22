@@ -42,7 +42,7 @@
       >
         <WindowBar palette={data.profileData.palette} />
         <div
-          class="overflow-y-auto text-white bg-shiroko-1 w-md md:w-3xl scrollbar-none"
+          class="overflow-y-auto text-white bg-shiroko-1 w-md md:w-2xl scrollbar-none"
           style="height: {profileHeight};"
         >
           {@render children()}
