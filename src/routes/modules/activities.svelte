@@ -23,7 +23,7 @@
   <div
     transition:slide
     style="background-color: {data.activityBG};"
-    class="relative flex flex-col gap-2 z-20 p-3 rounded-lg shadow-activityCard select-none animate-pulse"
+    class="relative flex flex-col gap-2 z-20 px-3 py-4 rounded-lg shadow-activityCard select-none animate-pulse"
     onanimationiteration={() => {
       iterator++;
       if (iterator > activities.length - 1) iterator = 0;

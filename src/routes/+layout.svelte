@@ -26,10 +26,10 @@
 ></div>
 
 <div
-  class="flex justify-center items-center not-md:items-start absolute inset-0 overflow-auto scrollbar-none"
+  class="flex justify-center items-start lg:items-center absolute inset-0 overflow-auto scrollbar-none"
 >
   <div
-    class="flex flex-col md:flex-row my-5 md:my-0 items-center gap-2 duration-200 drop-shadow-sm drop-shadow-black"
+    class="flex flex-col lg:flex-row my-5 lg:my-0 items-center gap-2 duration-200 drop-shadow-sm drop-shadow-black"
   >
     <div bind:this={profileHolder} class="flex flex-col shrink-0">
       <Profile profileData={data.profileData} />
@@ -43,7 +43,7 @@
         <WindowBar palette={data.profileData.palette} />
         <div
           class="overflow-y-auto text-white bg-shiroko-1 w-md md:w-3xl scrollbar-none"
-          style="height: {profileHeight};"
+          style="min-height: {profileHeight};"
         >
           {@render children()}
         </div>
