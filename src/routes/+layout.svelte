@@ -21,14 +21,15 @@
 </script>
 
 <div
-  class="fixed w-screen h-screen opacity-35 bg-[url({site_background})] bg-cover"
+  style="background-image: url({site_background});"
+  class="fixed w-screen h-screen opacity-35 bg-cover"
 ></div>
 
 <div
   class="flex justify-center items-center not-md:items-start absolute inset-0 overflow-auto scrollbar-none"
 >
   <div
-    class="flex flex-col md:flex-row items-center gap-2 duration-200 drop-shadow-sm drop-shadow-black"
+    class="flex flex-col md:flex-row my-5 md:my-0 items-center gap-2 duration-200 drop-shadow-sm drop-shadow-black"
   >
     <div bind:this={profileHolder} class="flex flex-col shrink-0">
       <Profile profileData={data.profileData} />
