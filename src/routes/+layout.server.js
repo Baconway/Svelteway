@@ -5,8 +5,8 @@ import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import advanedFormat from "dayjs/plugin/advancedFormat";
 
-import { getPalette, getPaletteSync } from "colorthief";
-import { createCanvas, loadImage, Image } from "canvas";
+import { getPalette } from "colorthief";
+import { createCanvas, loadImage } from "canvas";
 
 import {
   template_avatar,
