@@ -21,7 +21,7 @@
 
 <title>Extras</title>
 <div
-  class="ml-5 mt-5 flex flex-col justify-center items-center gap-2 not-md:mb-20"
+  class="ml-5 mt-7 flex flex-col justify-center items-center gap-2 not-md:mb-20"
   transition:scale
 >
   <p class="text-2xl font-bold text-white">Other Links</p>

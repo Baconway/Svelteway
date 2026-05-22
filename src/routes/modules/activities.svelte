@@ -13,7 +13,6 @@
     );
 
     const data = await response.json();
-    console.log(data.data.activities);
     activities = cleanUpActivities(data.data.activities);
   });
 
@@ -26,7 +25,6 @@
     style="background-color: {data.activityBG};"
     class="relative flex flex-col gap-2 z-20 p-3 rounded-lg shadow-activityCard select-none animate-pulse"
     onanimationiteration={() => {
-      console.log(iterator);
       iterator++;
       if (iterator > activities.length - 1) iterator = 0;
     }}

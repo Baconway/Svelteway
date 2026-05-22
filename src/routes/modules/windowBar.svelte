@@ -10,8 +10,7 @@
 </script>
 
 <div
-  style="background-image: linear-gradient({data.palette[0]}, {data
-    .palette[1]});"
+  style="background-color: {data.palette[0]};"
   class="sticky top-0 flex flex-row w-full pb-1 px-1 bg-linear-to-br justify-between items-center"
 >
   <div class="flex flex-row items-center justify-center align-middle pl-2">

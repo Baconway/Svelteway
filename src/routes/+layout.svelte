@@ -3,6 +3,7 @@
   import { onMount } from "svelte";
 
   import "../applet.css";
+  import { site_background } from "$lib/jsons/siteSettings.json";
   import Connections from "$modules/connections.svelte";
   import Profile from "$modules/profile.svelte";
   import WindowBar from "$modules/windowBar.svelte";
@@ -20,7 +21,7 @@
 </script>
 
 <div
-  class="fixed w-screen h-screen opacity-35 bg-[url(https://image.bway.lol/frame/Fragrance_UI_Frame_250744.png)] bg-cover"
+  class="fixed w-screen h-screen opacity-35 bg-[url({site_background})] bg-cover"
 ></div>
 
 <div
@@ -40,7 +41,7 @@
       >
         <WindowBar palette={data.profileData.palette} />
         <div
-          class="overflow-y-auto text-white bg-shiroko-1 max-w-md md:max-w-3xl scrollbar-none"
+          class="overflow-y-auto text-white bg-shiroko-1 w-md md:w-3xl scrollbar-none"
           style="height: {profileHeight};"
         >
           {@render children()}
