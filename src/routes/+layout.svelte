@@ -20,6 +20,7 @@
   });
 </script>
 
+<svelte:head><title>Baconway</title></svelte:head>
 <div
   style="background-image: url({site_background});"
   class="fixed w-screen h-screen opacity-35 bg-cover"
