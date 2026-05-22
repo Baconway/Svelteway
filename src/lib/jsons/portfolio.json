@@ -1,42 +1,42 @@
 {
   "Languages": [
     {
-      "lang": "python",
+      "name": "python",
       "link": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
       "title": "Python"
     },
     {
-      "lang": "html5",
+      "name": "html5",
       "link": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
       "title": "HTML"
     },
     {
-      "lang": "css3",
+      "name": "css3",
       "link": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
       "title": "CSS"
     },
     {
-      "lang": "javascript",
+      "name": "javascript",
       "link": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
       "title": "JavaScript"
     },
     {
-      "lang": "html5",
+      "name": "html5",
       "link": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
       "title": "HTML"
     },
     {
-      "lang": "lua",
+      "name": "lua",
       "link": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/lua/lua-original.svg",
       "title": "Lua"
     },
     {
-      "lang": "csharp",
+      "name": "csharp",
       "link": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg",
       "title": "C#"
     },
     {
-      "lang": "cplusplus",
+      "name": "cplusplus",
       "link": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg",
       "title": "C++"
     }
@@ -44,17 +44,17 @@
 
   "Development_Platforms": [
     {
-      "platform": "svelte",
+      "name": "svelte",
       "link": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/svelte/svelte-original.svg",
       "title": "Svelte"
     },
     {
-      "platform": "studio",
+      "name": "studio",
       "link": "/studio.svg",
       "title": "Roblox Studio"
     },
     {
-      "platform": "nodejs",
+      "name": "nodejs",
       "link": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
       "title": "NodeJS"
     }
@@ -62,9 +62,14 @@
 
   "Development_Groups": [
     {
-      "group": "nlc",
+      "group": "noob larping center",
       "link": "/nlc.webp",
       "title": "noob larping center"
+    },
+    {
+      "group": "NiC: Cold Front",
+      "link": "/cf.webp",
+      "title": "NiC: Cold Front"
     }
   ]
 }

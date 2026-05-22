@@ -1,11 +1,11 @@
 <script>
-  import { slide, fade } from "svelte/transition";
+  import { scale } from "svelte/transition";
   import { CopyInfo, LinkInfo } from "$lib/jsons/games.json";
 </script>
 
 {#snippet InfoBlock(reference)}
   <div
-    class="flex flex-col flex-wrap justify-between items-center align-middle w-64 border-2 border-indigo-700 dark:border-salt-blue bg-gray-300 dark:bg-gray-800 dark:text-white p-3 rounded-sm"
+    class="flex flex-col flex-wrap justify-between items-center align-middle w-64 border-2 border-salt-3 bg-shiroko-5 p-3 rounded-sm"
   >
     <div class="flex flex-col justify-center items-center gap-1">
       <img
@@ -21,10 +21,10 @@
 
 <title>Extras</title>
 <div
-  class="ml-5 not-md:mt-8 flex flex-col justify-center items-center gap-2 not-md:mb-20"
-  transition:slide
+  class="ml-5 mt-5 flex flex-col justify-center items-center gap-2 not-md:mb-20"
+  transition:scale
 >
-  <p class="text-2xl font-bold dark:text-white">Other Links</p>
+  <p class="text-2xl font-bold text-white">Other Links</p>
 
   <div class="flex flex-row gap-2 flex-wrap justify-center max-w-3xl">
     {#each CopyInfo as extraInfoBlock}

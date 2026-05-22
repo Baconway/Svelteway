@@ -1,55 +1,22 @@
 <script>
+  import { fade, scale } from "svelte/transition";
+
   import { PUBLIC_USERID, PUBLIC_GUILD_INVITE } from "$env/static/public";
 
   import Connections from "$modules/connections.svelte";
+  import Activities from "$modules/activities.svelte";
   import { defaultStatusColors } from "$lib/jsons/defaults.json";
   import { changeVisibility, getVisibility } from "$modules/state.svelte.js";
+
   import { onMount } from "svelte";
-  import { getPaletteSync } from "colorthief";
 
-  /*const StatusSocket = new WebSocket("wss://api.lanyard.rest/socket");
-  StatusSocket.addEventListener("message", (event) => {
-    const socketResponse = JSON.parse(event.data);
-
-    if (socketResponse.op === 1) {
-      StatusSocket.send(
-        JSON.stringify({
-          op: 2,
-          d: {
-            subscribe_to_ids: [PUBLIC_USERID],
-          },
-        }),
-      );
-
-      return;
-    }
-
-    if (socketResponse.op === 0) {
-      try {
-        status =
-          defaultStatusColors[socketResponse.d[PUBLIC_USERID].discord_status];
-      } catch (TypeError) {
-        status = defaultStatusColors[socketResponse.d.discord_status];
-      }
-
-      return;
-    }
-  });*/
-  let bannerImage;
-  const GetPalette = async () => {
-    //console.log(getPaletteSync(bannerImage));
-  };
-  onMount(() => {
-    GetPalette();
-  });
   let data = $props();
 </script>
 
 <div
   style="background-image: linear-gradient({data.profileData.palette[0]}, {data
     .profileData.palette[1]});"
-  class=" self-start flex flex-col bg-linear-to-br rounded-md p-1 duration-300"
-  transition:slide={{ axis: "x" }}
+  class="flex flex-col max-w-85 align-top bg-linear-to-br rounded-md p-1 duration-300"
 >
   <div class="relative">
     <img
@@ -78,7 +45,7 @@
         target="_blank"
       >
         <img
-          class="w-[14px] h-[14px] mr-0.5"
+          class="w-3.5 h-3.5 mr-0.5"
           src={data.profileData.badge}
           alt="guild tag"
         />
@@ -87,6 +54,7 @@
 
       <p class="font-bold mt-5">Current Time:</p>
       <p class="mb-5">{data.profileData.date}</p>
+      <Activities activityBG={data.profileData.palette[2]} />
       <div class="flex flex-col gap-2 mb-4">
         <p class="font-bold">Connections</p>
         <Connections />
@@ -94,7 +62,7 @@
       <div class="flex flex-row gap-2">
         <button
           style="background-color: {data.profileData.palette[2]};"
-          class="grow-1 p-2 items-center-safe rounded-xl text-md cursor-pointer"
+          class="grow p-2 items-center-safe rounded-xl text-md cursor-pointer"
           onclick={() => changeVisibility()}>More &raquo;</button
         >
       </div>

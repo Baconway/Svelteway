@@ -3,6 +3,9 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
+  --animate-spinning: move 1s linear infinite alternate;
+  --animate-pulse: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
   --color-shiroko-1: rgb(36, 41, 64);
   --color-shiroko-2: rgb(110, 253, 255);
   --color-shiroko-3: rgb(202, 253, 36);
@@ -13,38 +16,18 @@
   --color-salt-3: rgb(16, 181, 247);
   --color-salt-4: rgb(0, 0, 0);
   --color-salt-5: rgb(132, 16, 0);
+
+  --shadow-activityCard: 0px 1px 4px hsl(none 0% 0%/0.14);
 }
 
-/*@theme {
-  --animate-rainbow: rainbow 4.5s ease-in-out infinite;
-  --color-salt-blue: #30a6d7;
-
-  @keyframes rainbow {
-    create keyframes to make animations
-    12.5% {
-      color: red;
-    }
-    25% {
-      color: orange;
-    }
-    37.5% {
-      color: yellow;
-    }
-    50% {
-      color: green;
-    }
-    62.5% {
-      color: blue;
-    }
-    75% {
-      color: indigo;
-    }
-    87.5% {
-      color: violet;
-    }
-    100% {
-      color: white;
-    }
+@keyframes move {
+  to {
+    transform: scaleX(-1);
   }
 }
-*/
+
+@keyframes pulse {
+  50% {
+    opacity: 0.6;
+  }
+}

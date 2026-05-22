@@ -1,5 +1,5 @@
 <script>
-  import { fade, scale } from "svelte/transition";
+  import { scale } from "svelte/transition";
   import { onMount } from "svelte";
 
   import "../applet.css";
@@ -7,61 +7,42 @@
   import Profile from "$modules/profile.svelte";
   import WindowBar from "$modules/windowBar.svelte";
   import { changeVisibility, getVisibility } from "$modules/state.svelte.js";
+  import { circInOut } from "svelte/easing";
+
   let { children, data } = $props();
+  let profileHolder = $state(null);
+  let profileHeight = $state();
 
-  let profileContainer;
-  let windowBodyHeight = $state("auto");
-  let windowBodyWidth = $state("auto");
-
-  const syncWindowBody = () => {
-    if (profileContainer) {
-      windowBodyHeight = `${profileContainer.offsetHeight}px`;
-      windowBodyWidth = `${profileContainer.offsetWidth}px`;
-    }
-  };
-
-  onMount(() => {
-    syncWindowBody();
+  $effect(() => {
+    if (!profileHolder) return;
+    profileHeight = `${profileHolder.offsetHeight}px`;
   });
-
-  /*function themeChange(theme) {
-    if (document.documentElement.className == "dark") {
-      document.documentElement.className = "light";
-    } else {
-      document.documentElement.className = "dark";
-    }
-  }*/
 </script>
 
-<video
-  class="fixed inset-0 min-w-screen min-h-screen opacity-40 loop object-right"
-  muted
-  loop
-  autoplay
->
-  <source src={data.vid} type="video/mp4" />
-  <track kind="captions" />
-</video>
-
 <div
-  class="flex justify-center items-center fixed w-screen h-screen"
-  transition:fade
->
+  class="fixed w-screen h-screen opacity-35 bg-[url(https://image.bway.lol/frame/Fragrance_UI_Frame_250744.png)] bg-cover"
+></div>
+
+<div class="flex justify-center items-center fixed w-screen h-screen">
   <div
     class="flex flex-col md:flex-row items-center gap-2 duration-200 drop-shadow-sm drop-shadow-black"
   >
-    <div bind:this={profileContainer} class="flex flex-col shrink-0">
+    <div bind:this={profileHolder} class="flex flex-col shrink-0">
       <Profile profileData={data.profileData} />
     </div>
 
     {#if getVisibility()}
       <div
-        class="relative pb-2 overflow-y-auto text-white bg-shiroko-1 w-3xl"
-        transition:scale={{ scale: 1 }}
-        style="height: {windowBodyHeight}"
+        class="self-start flex flex-col grow-0 shrink-0"
+        transition:scale={{ scale: 1, easing: circInOut }}
       >
         <WindowBar palette={data.profileData.palette} />
-        {@render children()}
+        <div
+          class="overflow-y-auto text-white bg-shiroko-1 w-3xl scrollbar-none"
+          style="height: {profileHeight};"
+        >
+          {@render children()}
+        </div>
       </div>
     {/if}
   </div>

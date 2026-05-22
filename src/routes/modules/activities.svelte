@@ -1,73 +1,77 @@
 <script>
-  import { fade, scale } from "svelte/transition";
-  import { interpretImageLinks, cleanUpActivities } from "../utilities";
+  import { fade, scale, slide } from "svelte/transition";
+  import { PUBLIC_USERID } from "$env/static/public";
+  import { interpretImageLinks, cleanUpActivities } from "$lib/utilities";
+  import { onMount } from "svelte";
 
-  let activities = $state(null);
+  let activities = $state();
+  let iterator = $state(0);
 
-  $effect(async (params) => {
+  onMount(async () => {
     const response = await fetch(
-      "https://api.lanyard.rest/v1/users/714482641134551071"
+      `https://api.lanyard.rest/v1/users/${PUBLIC_USERID}`,
     );
 
     const data = await response.json();
+    console.log(data.data.activities);
     activities = cleanUpActivities(data.data.activities);
   });
+
+  let data = $props();
 </script>
 
-{#snippet activityBoxImage(imgSize, activity)}
-  <img
-    class={imgSize == "large"
-      ? "w-[75px] rounded-md"
-      : "absolute -bottom-0.5 -right-3 w-[30px] rounded-3xl"}
-    alt="activity"
-    src={interpretImageLinks(
-      activity.application_id,
-      activity.assets[imgSize.concat("_image")]
-    )}
-    title={activity.assets[imgSize.concat("_text")]
-      ? `${activity.assets[imgSize.concat("_text")]}`
-      : ""}
-  />
-{/snippet}
+{#snippet ActivityBox()}
+  <div
+    transition:slide
+    style="background-color: {data.activityBG};"
+    class="relative flex flex-col gap-2 z-20 p-3 rounded-lg shadow-activityCard select-none animate-pulse"
+    onanimationiteration={() => {
+      console.log(iterator);
+      iterator++;
+      if (iterator > activities.length - 1) iterator = 0;
+    }}
+  >
+    <div class="flex flex-row justify-between items-center">
+      <p class="text-[12px]">Playing</p>
+    </div>
 
-<div
-  class="flex flex-row duration-100 gap-3.5
-  not-md:flex-col"
-  transition:scale
->
-  {#each activities as activity}
-    <div
-      class="flex flex-row gap-4 w-lg p-1.5 rounded-sm border-2 border-indigo-700 dark:border-salt-blue text-black dark:text-amber-50 bg-gray-300 dark:bg-gray-800 ml-0.5"
-    >
-      <div class="relative">
-        {#if activity.assets}
-          {@render activityBoxImage("large", activity)}
-          {#if activity.assets.small_image}
-            {@render activityBoxImage("small", activity)}
-          {/if}
-        {:else}
+    <div class="flex flex-row gap-2">
+      <div class="relative shrink-0">
+        <img
+          class="relative w-15 h-15 rounded-lg object-contain"
+          src={interpretImageLinks(
+            activities[iterator].application_id,
+            activities[iterator].assets.large_image,
+          )}
+          alt="big img"
+          title={activities[iterator].assets.large_text}
+        />
+        {#if activities[iterator].assets.small_image}
           <img
-            class="w-[75px] rounded-md"
-            alt="activityPlaceholder"
-            src="/salt.png"
-            title="i dont have an image for this lmao"
-          />
-        {/if}
+            style="background-color: {data.activityBG}; border-color: {data.activityBG}; "
+            class="absolute -bottom-1 -right-1 w-6 h-6 z-20 rounded-full object-cover"
+            src={interpretImageLinks(
+              activities[iterator].application_id,
+              activities[iterator].assets.small_image,
+            )}
+            alt="small img"
+            title={activities[iterator].assets.small_text}
+          />{/if}
       </div>
 
-      <div class="flex flex-col w-[86%] justify-center">
-        <p class="text-xl font-bold truncate" title={activity.name}>
-          {activity.name}
+      <div class="flex flex-col text-sm truncate">
+        <p class="text-[16px]">{activities[iterator].name}</p>
+        <p class="truncate" title={activities[iterator].details}>
+          {activities[iterator].details}
         </p>
-
-        <p class="text-sm truncate" title={activity.details}>
-          {activity.details}
-        </p>
-
-        <p class="text-sm truncate" title={activity.state}>
-          {activity.state}
-        </p>
+        <p class="truncate">{activities[iterator].state}</p>
       </div>
     </div>
-  {/each}
-</div>
+  </div>
+{/snippet}
+
+{#if activities}
+  <div class="flex flex-col rounded-lg gap-2 my-2">
+    {@render ActivityBox()}
+  </div>
+{/if}

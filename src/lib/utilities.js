@@ -2,6 +2,7 @@ export function interpretImageLinks(application_id, img) {
   if (!img || img == undefined) {
     return null;
   }
+
   if (img.substring(0, 3) != "mp:") {
     return `https://cdn.discordapp.com/app-assets/${application_id}/${img.substring(
       0,
@@ -11,19 +12,14 @@ export function interpretImageLinks(application_id, img) {
   }
 }
 
-export function cleanUpActivities(activities, needsCustom) {
+export function cleanUpActivities(activities) {
   // pretty much made just to handle custom statuses with id='custom'
   let cleaned = [];
   for (let index = 0; index < activities.length; index++) {
     const element = activities[index];
-    if (needsCustom) {
-      if (element.id == "custom") {
-        return element;
-      }
-    }
-    if (element.id != "custom") {
-      cleaned.push(element);
-    }
+    if (element.id === "custom") continue;
+
+    cleaned.push(element);
   }
 
   return cleaned;

@@ -16,25 +16,27 @@ import {
   default_format, //see format list: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 } from "$lib/jsons/defaults.json";
 
-import video from "$lib/video/fragrance.mp4";
-
 // extend module https://day.js.org/docs/en/plugin/plugin
 dayJS.extend(utc);
 dayJS.extend(timezone);
 dayJS.extend(advanedFormat);
 
 async function ExtractColorPalette(source) {
+  // load the img from the link, creates and draws the image onto a similarly sized canvas, then gets the palette as a buffer
+  const image = await loadImage(
+    "https://image.bway.lol/frame/maimai%20%E3%81%A7%E3%82%89%E3%81%A3%E3%81%8F%E3%81%99%20%E3%82%B0%E3%83%83%E3%82%BA%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B3DiSC%20-PRiSM-_UI_Frame_509505.png",
+  );
+  const canvas = createCanvas(image.width, image.height);
+  const context = canvas.getContext("2d");
+  context.drawImage(image, 0, 0);
 
-  const image = await loadImage("https://image.bway.lol/frame/maimai%20%E3%81%A7%E3%82%89%E3%81%A3%E3%81%8F%E3%81%99%20%E3%82%B0%E3%83%83%E3%82%BA%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B3DiSC%20-PRiSM-_UI_Frame_509505.png")
-  const canvas = createCanvas(image.width, image.height)
-  const context = canvas.getContext('2d')
-  context.drawImage(image, 0, 0)
-  
-  const returningPalette = await getPalette(canvas.toBuffer(), {colorCount: 3});
-  
+  const returningPalette = await getPalette(canvas.toBuffer(), {
+    colorCount: 3,
+  });
+
   const hexPalette = [];
   returningPalette.forEach((c) => hexPalette.push(c.hex()));
-  
+
   return hexPalette;
 }
 
@@ -77,6 +79,5 @@ async function GetLanyardData() {
 export async function load() {
   return {
     profileData: await GetLanyardData(),
-    vid: video,
   };
 }
