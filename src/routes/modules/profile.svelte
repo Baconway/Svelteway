@@ -16,7 +16,7 @@
 <div
   style="background-image: linear-gradient({data.profileData.palette[0]}, {data
     .profileData.palette[1]});"
-  class="flex flex-col max-w-85 align-top bg-linear-to-br rounded-md p-1 duration-300"
+  class="flex flex-col max-w-85 bg-linear-to-br rounded-md p-1"
 >
   <div class="relative">
     <img

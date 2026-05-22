@@ -23,7 +23,9 @@
   class="fixed w-screen h-screen opacity-35 bg-[url(https://image.bway.lol/frame/Fragrance_UI_Frame_250744.png)] bg-cover"
 ></div>
 
-<div class="flex justify-center items-center fixed w-screen h-screen">
+<div
+  class="flex justify-center items-center absolute w-screen h-screen overflow-y-auto scrollbar-none"
+>
   <div
     class="flex flex-col md:flex-row items-center gap-2 duration-200 drop-shadow-sm drop-shadow-black"
   >
@@ -33,12 +35,12 @@
 
     {#if getVisibility()}
       <div
-        class="self-start flex flex-col grow-0 shrink-0"
+        class="self-start flex flex-col grow-0"
         transition:scale={{ scale: 1, easing: circInOut }}
       >
         <WindowBar palette={data.profileData.palette} />
         <div
-          class="overflow-y-auto text-white bg-shiroko-1 w-3xl scrollbar-none"
+          class="overflow-y-auto text-white bg-shiroko-1 max-w-md md:max-w-3xl scrollbar-none"
           style="height: {profileHeight};"
         >
           {@render children()}
