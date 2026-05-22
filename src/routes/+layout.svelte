@@ -24,7 +24,7 @@
 ></div>
 
 <div
-  class="flex justify-center items-center absolute w-screen h-screen overflow-y-auto scrollbar-none"
+  class="flex justify-center items-center not-md:items-start absolute inset-0 overflow-auto scrollbar-none"
 >
   <div
     class="flex flex-col md:flex-row items-center gap-2 duration-200 drop-shadow-sm drop-shadow-black"
