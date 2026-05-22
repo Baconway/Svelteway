@@ -11,7 +11,7 @@
 
 <div
   style="background-color: {data.palette[0]};"
-  class="sticky top-0 flex flex-row w-full pb-1 px-1 bg-linear-to-br justify-between items-center"
+  class="sticky top-0 z-10 flex flex-row w-full pb-1 px-1 bg-linear-to-br justify-between items-center"
 >
   <div class="flex flex-row items-center justify-center align-middle pl-2">
     <a href={resolveRoute("/")}
