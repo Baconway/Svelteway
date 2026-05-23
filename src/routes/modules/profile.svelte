@@ -39,18 +39,20 @@
         {data.profileData.display_name}
       </p>
       <p>{data.profileData.username} &bull; I exist</p>
-      <a
-        class="flex flex-row items-center justify-center w-fit px-1 mt-0.5 border-2 border-double border-shiroko-2 rounded-lg drop-shadow-md drop-shadow-shiroko-5"
-        href={PUBLIC_GUILD_INVITE}
-        target="_blank"
-      >
-        <img
-          class="w-3.5 h-3.5 mr-0.5"
-          src={data.profileData.badge}
-          alt="guild tag"
-        />
-        <p class="text-xs font-extrabold">{data.profileData.guild_tag}</p>
-      </a>
+      {#if data.profileData.badge !== undefined}
+        {console.log(data.profileData.badge)}
+        <a
+          class="flex flex-row items-center justify-center w-fit px-1 mt-0.5 border-2 border-double border-shiroko-2 rounded-lg drop-shadow-md drop-shadow-shiroko-5"
+          href={PUBLIC_GUILD_INVITE}
+          target="_blank"
+        >
+          <img
+            class="w-3.5 h-3.5 mr-0.5"
+            src={data.profileData.badge}
+            alt="guild tag"
+          />
+          <p class="text-xs font-extrabold">{data.profileData.guild_tag}</p>
+        </a>{/if}
 
       <p class="font-bold mt-5">Current Time:</p>
       <p class="mb-5">{data.profileData.date}</p>

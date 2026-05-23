@@ -40,6 +40,25 @@ async function ExtractColorPalette(source) {
   return hexPalette;
 }
 
+function getGuildBadge(user) {
+  let guildBadge = {};
+
+  try {
+    const guildBadgeImage = `https://cdn.discordapp.com/guild-tag-badges/${user.primary_guild.identity_guild_id}/${user.primary_guild.badge}.png`;
+    const guildTagName = user.primary_guild.tag;
+
+    guildBadge["badge"] = guildBadgeImage;
+    guildBadge["guild_tag"] = guildTagName;
+  } catch (TypeError) {
+    //doesnt show up for some reason
+    return;
+  }
+
+  if (!user.primary_guild.identity_enabled) return; //no guild tag
+
+  return guildBadge;
+}
+
 // load profile data
 const currentDay = dayJS().tz(default_timezone).format(default_format);
 const PaletteOptions = { colorCount: 3 };
@@ -61,14 +80,12 @@ async function GetLanyardData() {
       palette: await ExtractColorPalette(`./static/${template_banner}`),
     };
   }
-
   return {
     display_name: response.data.discord_user.display_name,
     username: response.data.discord_user.username,
     avatar: `https://cdn.discordapp.com/avatars/${response.data.discord_user.id}/${response.data.discord_user.avatar}.webp?size=256`,
     banner: profile_banner,
-    badge: `https://cdn.discordapp.com/guild-tag-badges/${response.data.discord_user.primary_guild.identity_guild_id}/${response.data.discord_user.primary_guild.badge}.png`,
-    guild_tag: response.data.discord_user.primary_guild.tag,
+    ...getGuildBadge(response.data.discord_user),
     status: response.data.discord_status,
     date: currentDay,
     palette: await ExtractColorPalette(profile_banner),
