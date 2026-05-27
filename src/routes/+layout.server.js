@@ -24,7 +24,7 @@ dayJS.extend(timezone);
 dayJS.extend(advanedFormat);
 
 async function ExtractColorPalette(source) {
-  // load the img from the link, creates and draws the image onto a similarly sized canvas, then gets the palette as a buffer
+  // load the img from the link, creates and draws the image onto a similarly sized canvas, then gets the 3-color palette as a buffer
   const image = await loadImage(source);
   const canvas = createCanvas(image.width, image.height);
   const context = canvas.getContext("2d");
@@ -92,8 +92,10 @@ async function GetLanyardData() {
   };
 }
 
-export async function load() {
+const returnedData = await GetLanyardData();
+
+export function load() {
   return {
-    profileData: await GetLanyardData(),
+    profileData: returnedData,
   };
 }

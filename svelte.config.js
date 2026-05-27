@@ -6,7 +6,12 @@ const config = {
     alias: {
       $modules: "src/routes/modules",
     },
-    adapter: adapter(),
+    adapter: adapter({
+      images: {
+        sizes: [16, 32, 332],
+        domains: ["image.bway.lol"],
+      },
+    }),
   },
 };
 
