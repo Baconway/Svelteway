@@ -35,25 +35,33 @@
 
     <div class="flex flex-row gap-2">
       <div class="relative shrink-0">
-        <img
-          class="relative w-15 h-15 rounded-lg object-contain"
-          src={interpretImageLinks(
-            activities[iterator].application_id,
-            activities[iterator].assets.large_image,
-          )}
-          alt="big img"
-          title={activities[iterator].assets.large_text}
-        />
-        {#if activities[iterator].assets.small_image}
+        {#if activities[iterator].assets}
           <img
-            style="background-color: {data.activityBG}; border-color: {data.activityBG}; "
-            class="absolute -bottom-1 -right-1 w-6 h-6 z-20 rounded-full object-cover"
+            class="relative w-15 h-15 rounded-lg object-contain"
             src={interpretImageLinks(
               activities[iterator].application_id,
-              activities[iterator].assets.small_image,
+              activities[iterator].assets.large_image,
             )}
-            alt="small img"
-            title={activities[iterator].assets.small_text}
+            alt="big img"
+            title={activities[iterator].assets.large_text}
+          />
+          {#if activities[iterator].assets.small_image}
+            <img
+              style="background-color: {data.activityBG}; border-color: {data.activityBG}; "
+              class="absolute -bottom-1 -right-1 w-6 h-6 z-20 rounded-full object-cover"
+              src={interpretImageLinks(
+                activities[iterator].application_id,
+                activities[iterator].assets.small_image,
+              )}
+              alt="small img"
+              title={activities[iterator].assets.small_text}
+            />{/if}
+        {:else}
+          <img
+            class="relative w-15 h-15 rounded-lg object-contain"
+            src="/salt2.png"
+            alt="big img"
+            title="Playing something"
           />{/if}
       </div>
 
