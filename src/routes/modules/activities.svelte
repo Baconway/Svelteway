@@ -4,7 +4,7 @@
   import { interpretImageLinks, cleanUpActivities } from "$lib/utilities";
   import { onMount } from "svelte";
 
-  let activities = $state();
+  let activities = $state([]);
   let iterator = $state(0);
 
   onMount(async () => {
@@ -35,7 +35,7 @@
 
     <div class="flex flex-row gap-2">
       <div class="relative shrink-0">
-        {#if activities[iterator].assets}
+        {#if activities[iterator]}
           <img
             class="relative w-15 h-15 rounded-lg object-contain"
             src={interpretImageLinks(
@@ -76,7 +76,7 @@
   </div>
 {/snippet}
 
-{#if activities}
+{#if activities.length > 0}
   <div class="flex flex-col rounded-lg gap-2 my-2">
     {@render ActivityBox()}
   </div>
