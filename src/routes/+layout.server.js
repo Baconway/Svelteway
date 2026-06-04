@@ -26,7 +26,7 @@ dayJS.extend(advanedFormat);
 
 async function ExtractColorPalette(source) {
   // load the img from the link, creates and draws the image onto a similarly sized canvas, then gets the 3-color palette as a buffer
-  const img_server_status = await fetch("https://image.bway.lol");
+  const img_server_status = await fetch(source);
   if (img_server_status.status === 404)
     source =
       "https://lokeshdhakar.com/projects/color-thief/assets/image-1-DehmUCVD.jpg";
