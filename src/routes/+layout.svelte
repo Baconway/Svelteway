@@ -33,7 +33,7 @@
     class="flex flex-col xl:flex-row my-5 xl:my-0 items-center gap-2 duration-200 drop-shadow-sm drop-shadow-black"
   >
     <div bind:this={profileHolder} class="flex flex-col shrink-0">
-      <Profile profileData={data.profileData} />
+      <Profile profileData={data.profileData} steamData={data.steamData} />
     </div>
 
     {#if getVisibility()}

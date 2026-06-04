@@ -59,7 +59,7 @@
       <Activities activityBG={data.profileData.palette[2]} />
       <div class="flex flex-col gap-2 mb-4">
         <p class="font-bold">Connections</p>
-        <Connections />
+        <Connections steam={data.steamData} />
       </div>
       <div class="flex flex-row gap-2">
         <button
