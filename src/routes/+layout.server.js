@@ -24,12 +24,10 @@ dayJS.extend(utc);
 dayJS.extend(timezone);
 dayJS.extend(advanedFormat);
 
-async function ExtractColorPalette(source) {
+async function ExtractColorPalette(source, backup) {
   // load the img from the link, creates and draws the image onto a similarly sized canvas, then gets the 3-color palette as a buffer
   const img_server_status = await fetch(source);
-  if (img_server_status.status === 404)
-    source =
-      "https://lokeshdhakar.com/projects/color-thief/assets/image-1-DehmUCVD.jpg";
+  if (img_server_status.status === 404) source = backup; //if image server dies
 
   const image = await loadImage(source);
   const canvas = createCanvas(image.width, image.height);
@@ -67,7 +65,6 @@ function getGuildBadge(user) {
 
 // load profile data
 const currentDay = dayJS().tz(default_timezone).format(default_format);
-const PaletteOptions = { colorCount: 3 };
 
 async function GetLanyardData() {
   let response = await fetch(
@@ -83,18 +80,20 @@ async function GetLanyardData() {
       banner: template_banner,
       status: default_status,
       date: currentDay,
-      palette: await ExtractColorPalette(`./static/${template_banner}`),
+      palette: ["#d7dae8", "#a2a8c6", "#c3c8de"],
     };
   }
+
+  const discord_avatar = `https://cdn.discordapp.com/avatars/${response.data.discord_user.id}/${response.data.discord_user.avatar}.png?size=256`;
   return {
     display_name: response.data.discord_user.display_name,
     username: response.data.discord_user.username,
-    avatar: `https://cdn.discordapp.com/avatars/${response.data.discord_user.id}/${response.data.discord_user.avatar}.webp?size=256`,
+    avatar: discord_avatar,
     banner: profile_banner,
     ...getGuildBadge(response.data.discord_user),
     status: response.data.discord_status,
     date: currentDay,
-    palette: await ExtractColorPalette(profile_banner),
+    palette: await ExtractColorPalette(profile_banner, discord_avatar),
   };
 }
 

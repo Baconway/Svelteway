@@ -23,7 +23,7 @@
   <div
     transition:slide
     style="background-color: {data.activityBG};"
-    class="relative flex flex-col gap-2 z-20 px-3 py-4 rounded-lg shadow-activityCard select-none animate-pulse"
+    class="relative flex flex-col gap-2 z-20 px-3 py-3 rounded-lg shadow-activityCard select-none animate-pulse"
     onanimationiteration={() => {
       iterator++;
       if (iterator > activities.length - 1) iterator = 0;
@@ -36,26 +36,37 @@
     <div class="flex flex-row gap-2">
       <div class="relative shrink-0">
         {#if activities[iterator]}
-          <img
-            class="relative w-15 h-15 rounded-lg object-contain"
-            src={interpretImageLinks(
-              activities[iterator].application_id,
-              activities[iterator].assets.large_image,
-            )}
-            alt="big img"
-            title={activities[iterator].assets.large_text}
-          />
-          {#if activities[iterator].assets.small_image}
+          <div class="relative flex flex-col group items-center justify-center">
             <img
-              style="background-color: {data.activityBG}; border-color: {data.activityBG}; "
-              class="absolute -bottom-1 -right-1 w-6 h-6 z-20 rounded-full object-cover"
+              class="relative w-15 h-15 rounded-lg object-contain"
               src={interpretImageLinks(
                 activities[iterator].application_id,
-                activities[iterator].assets.small_image,
+                activities[iterator].assets.large_image,
               )}
-              alt="small img"
-              title={activities[iterator].assets.small_text}
-            />{/if}
+              alt="big img"
+            />
+            <span
+              style="background-color: {data.activityBG};"
+              class="absolute -top-8 w-auto min-w-max p-1 rounded-md border-2 border-salt-3 duration-150 scale-0 group-hover:scale-100"
+              >{activities[iterator].assets.large_text}</span
+            >
+          </div>
+          {#if activities[iterator].assets.small_image}
+            <div
+              class="relative flex flex-col group items-center justify-center"
+            >
+              <img
+                style="background-color: {data.activityBG}; border-color: {data.activityBG}; "
+                class="absolute -bottom-1 -right-1 w-6 h-6 z-20 rounded-full object-cover"
+                src={interpretImageLinks(
+                  activities[iterator].application_id,
+                  activities[iterator].assets.small_image,
+                )}
+                alt="small img"
+                title={activities[iterator].assets.small_text}
+              />
+            </div>
+          {/if}
         {:else}
           <img
             class="relative w-15 h-15 rounded-lg object-contain"
