@@ -1,4 +1,4 @@
-import adapter from "@sveltejs/adapter-vercel";
+import adapter from "@sveltejs/adapter-node";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -6,12 +6,7 @@ const config = {
     alias: {
       $modules: "src/routes/modules",
     },
-    adapter: adapter({
-      images: {
-        sizes: [16, 32, 332],
-        domains: ["image.bway.lol"],
-      },
-    }),
+    adapter: adapter(),
   },
 };
 
