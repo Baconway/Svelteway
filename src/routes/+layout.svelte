@@ -7,7 +7,11 @@
   import Connections from "$modules/connections.svelte";
   import Profile from "$modules/profile.svelte";
   import WindowBar from "$modules/windowBar.svelte";
-  import { changeVisibility, getVisibility } from "$modules/state.svelte.js";
+  import {
+    changeVisibility,
+    getVisibility,
+    getDescription,
+  } from "$modules/state.svelte.js";
   import { circInOut } from "svelte/easing";
 
   let { children, data } = $props();
@@ -22,7 +26,7 @@
 
 <svelte:head><title>Baconway</title></svelte:head>
 <div
-  style="background-image: url({site_background});"
+  style="background-image: url({`/_banners/${site_background}`});"
   class="fixed w-screen h-screen opacity-35 bg-cover"
 ></div>
 
@@ -41,7 +45,7 @@
         class="self-start flex flex-col grow-0"
         transition:scale={{ scale: 1, easing: circInOut }}
       >
-        <WindowBar palette={data.profileData.palette} />
+        <WindowBar palette={getDescription().palette} />
         <div
           class="overflow-y-auto text-white bg-shiroko-1 w-md md:w-2xl scrollbar-none"
           style="height: {profileHeight};"

@@ -1,27 +1,63 @@
 <script>
   import { fade, scale } from "svelte/transition";
 
+  import dayJS from "dayjs";
+  import utc from "dayjs/plugin/utc";
+  import timezone from "dayjs/plugin/timezone";
+  import advanedFormat from "dayjs/plugin/advancedFormat";
+
   import { PUBLIC_USERID, PUBLIC_GUILD_INVITE } from "$env/static/public";
 
   import Connections from "$modules/connections.svelte";
   import Activities from "$modules/activities.svelte";
-  import { defaultStatusColors } from "$lib/jsons/defaults.json";
-  import { changeVisibility, getVisibility } from "$modules/state.svelte.js";
+  import {
+    changeVisibility,
+    getVisibility,
+    setDescription,
+    getDescription,
+  } from "$modules/state.svelte.js";
 
-  import { onMount } from "svelte";
+  import {
+    defaultStatusColors,
+    default_timezone,
+    default_format,
+    template_banner,
+  } from "$lib/jsons/defaults.json";
+  import { shouldTextBeBlack } from "$lib/utilities";
+
+  // extend module https://day.js.org/docs/en/plugin/plugin
+  dayJS.extend(utc);
+  dayJS.extend(timezone);
+  dayJS.extend(advanedFormat);
+
+  const GetDate = dayJS();
 
   let data = $props();
+  let currentTime = $state(GetDate.tz(default_timezone).format(default_format));
+
+  setInterval(() => {
+    currentTime = dayJS().tz(default_timezone).format(default_format);
+  }, 60000);
+
+  $effect(async () => {
+    let randomizer = await fetch("/randomizer");
+    randomizer = await randomizer.json();
+    setDescription(randomizer);
+  });
 </script>
 
 <div
-  style="background-image: linear-gradient({data.profileData.palette[0]}, {data
-    .profileData.palette[1]});"
+  style="background-image: linear-gradient({getDescription()
+    .palette[0]}, {getDescription().palette[1]});"
   class="flex flex-col max-w-85 bg-linear-to-br rounded-md p-1"
 >
-  <div class="relative">
+  <div class="relative select-none">
     <img
       class="relative w-85 h-30 object-cover object-bottom rounded-t-sm"
-      src={data.profileData.banner}
+      draggable="false"
+      src={getDescription().name
+        ? `/_banners/${getDescription().name}`
+        : template_banner}
       alt="banner"
     />
 
@@ -30,6 +66,7 @@
       class="absolute w-32 z-10 left-2 top-1/2 border-4 rounded-full"
       src={data.profileData.avatar}
       alt="pfp"
+      draggable="false"
     />
   </div>
 
@@ -42,7 +79,7 @@
       {#if data.profileData.badge !== undefined}
         {console.log(data.profileData.badge)}
         <a
-          class="flex flex-row items-center justify-center w-fit px-1 mt-0.5 border-2 border-double border-shiroko-2 rounded-lg drop-shadow-md drop-shadow-shiroko-5"
+          class="flex flex-row items-center justify-center w-fit px-1 mt-0.5 mb-5 border-2 border-double border-shiroko-2 rounded-lg drop-shadow-md drop-shadow-shiroko-5"
           href={PUBLIC_GUILD_INVITE}
           target="_blank"
         >
@@ -54,16 +91,19 @@
           <p class="text-xs font-extrabold">{data.profileData.guild_tag}</p>
         </a>{/if}
 
-      <p class="font-bold mt-5">Current Time:</p>
-      <p class="mb-5">{data.profileData.date}</p>
-      <Activities activityBG={data.profileData.palette[2]} />
+      <p class="font-bold mt-0.5">Current Time:</p>
+      <p class="mb-5">{currentTime}</p>
+      <Activities activityBG={getDescription().palette[2]} />
       <div class="flex flex-col gap-2 mb-4">
         <p class="font-bold">Connections</p>
         <Connections steam={data.steamData} />
       </div>
       <div class="flex flex-row gap-2">
         <button
-          style="background-color: {data.profileData.palette[2]};"
+          style="background-color: {getDescription()
+            .palette[2]}; color: {shouldTextBeBlack(getDescription().palette[2])
+            ? 'black'
+            : 'white'}"
           class="grow p-2 items-center-safe rounded-xl text-md cursor-pointer"
           onclick={() => changeVisibility()}>More &raquo;</button
         >

@@ -3,9 +3,12 @@
   import Window_max from "@iconify-svelte/lsicon/shell-window-maximize-outline";
   import Window_min from "@iconify-svelte/lsicon/shell-window-minimize-outline";
   import BackIcon from "@iconify-svelte/lsicon/arrow-left-outline";
+
   import { resolveRoute } from "$app/paths";
 
   import { changeVisibility, getVisibility } from "$modules/state.svelte.js";
+
+  import { shouldTextBeBlack } from "$lib/utilities";
   let data = $props();
 </script>
 
@@ -17,8 +20,10 @@
     <a href={resolveRoute("/")}
       ><BackIcon width="24px" height="24px" color="black" /></a
     >
-    <img class="w-7 h-7" src="/shiroko.gif" alt="icon" />
-    <p class="text-black">Information</p>
+    <img class="w-7 h-7" src="/shiroko.gif" alt="icon" draggable="false" />
+    <p style="color: {shouldTextBeBlack(data.palette[0]) ? 'black' : 'white'}">
+      Information
+    </p>
   </div>
 
   <div class="flex">

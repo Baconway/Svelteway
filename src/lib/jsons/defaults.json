@@ -4,7 +4,7 @@
   "template_banner": "/frame_notfound.png",
 
   "default_timezone": "Asia/Ho_Chi_Minh",
-  "default_format": "dddd, Do MMMM YYYY『z』",
+  "default_format": "hh:mma, dddd, Do MMMM YYYY『z』",
   "default_status": "offline",
 
   "defaultStatusColors": {

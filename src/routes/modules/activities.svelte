@@ -1,20 +1,28 @@
 <script>
   import { fade, scale, slide } from "svelte/transition";
   import { PUBLIC_USERID } from "$env/static/public";
-  import { interpretImageLinks, cleanUpActivities } from "$lib/utilities";
+  import {
+    interpretImageLinks,
+    cleanUpActivities,
+    shouldTextBeBlack,
+  } from "$lib/utilities";
   import { onMount } from "svelte";
 
   let activities = $state([]);
   let iterator = $state(0);
 
-  onMount(async () => {
+  async function getActivities() {
     const response = await fetch(
       `https://api.lanyard.rest/v1/users/${PUBLIC_USERID}`,
     );
 
     const data = await response.json();
+    if (!data.data) return;
     activities = cleanUpActivities(data.data.activities);
-  });
+  }
+  onMount(async () => await getActivities());
+
+  setInterval(async () => await getActivities(), 300000);
 
   let data = $props();
 </script>
@@ -22,7 +30,11 @@
 {#snippet ActivityBox()}
   <div
     transition:slide
-    style="background-color: {data.activityBG};"
+    style="background-color: {data.activityBG}; color: {shouldTextBeBlack(
+      data.activityBG,
+    )
+      ? 'black'
+      : 'white'}"
     class="relative flex flex-col gap-2 z-20 px-3 py-3 rounded-lg shadow-activityCard select-none animate-pulse"
     onanimationiteration={() => {
       iterator++;
@@ -44,6 +56,7 @@
                 activities[iterator].assets.large_image,
               )}
               alt="big img"
+              draggable="false"
             />
             <span
               style="background-color: {data.activityBG};"
@@ -64,6 +77,7 @@
                 )}
                 alt="small img"
                 title={activities[iterator].assets.small_text}
+                draggable="false"
               />
             </div>
           {/if}
@@ -73,6 +87,7 @@
             src="/salt2.png"
             alt="big img"
             title="Playing something"
+            draggable="false"
           />{/if}
       </div>
 

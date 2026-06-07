@@ -1,3 +1,35 @@
+function computeLuminence(backgroundcolor) {
+  let colors = hexToRgb(backgroundcolor);
+
+  const components = ["r", "g", "b"];
+  for (let i in components) {
+    let c = components[i];
+
+    colors[c] = colors[c] / 255.0;
+
+    if (colors[c] <= 0.03928) {
+      colors[c] = colors[c] / 12.92;
+    } else {
+      colors[c] = Math.pow((colors[c] + 0.055) / 1.055, 2.4);
+    }
+  }
+
+  const luminence = 0.2126 * colors.r + 0.7152 * colors.g + 0.0722 * colors.b;
+
+  return luminence;
+}
+
+function hexToRgb(hex) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null;
+}
+
 export function interpretImageLinks(application_id, img) {
   if (!img || img == undefined) {
     return null;
@@ -23,4 +55,8 @@ export function cleanUpActivities(activities) {
   }
 
   return cleaned;
+}
+
+export function shouldTextBeBlack(backgroundcolor) {
+  return computeLuminence(backgroundcolor) > 0.179;
 }
