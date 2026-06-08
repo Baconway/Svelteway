@@ -34,7 +34,7 @@ async function GetLanyardData() {
     `https://api.lanyard.rest/v1/users/${PUBLIC_USERID}`,
   );
   Lanyard_response = await Lanyard_response.json();
-
+  console.log(Lanyard_response);
   if (!Lanyard_response.success) {
     return {
       display_name: "Display Name",
