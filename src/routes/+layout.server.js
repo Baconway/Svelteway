@@ -34,7 +34,7 @@ async function GetLanyardData() {
     `https://api.lanyard.rest/v1/users/${PUBLIC_USERID}`,
   );
   Lanyard_response = await Lanyard_response.json();
-  console.log(Lanyard_response);
+
   if (!Lanyard_response.success) {
     return {
       display_name: "Display Name",
@@ -79,10 +79,10 @@ async function getSteam_API_data() {
   }
 }
 
-const returnedData = await GetLanyardData();
-const steam_connectionData = await getSteam_API_data();
+export async function load() {
+  const returnedData = await GetLanyardData();
+  const steam_connectionData = await getSteam_API_data();
 
-export function load() {
   return {
     profileData: returnedData,
     steamData: steam_connectionData,

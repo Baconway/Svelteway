@@ -34,9 +34,17 @@
 
   let data = $props();
   let currentTime = $state(GetDate.tz(default_timezone).format(default_format));
+  let currentStatus = $state("offline");
 
-  setInterval(() => {
+  setInterval(async () => {
     currentTime = dayJS().tz(default_timezone).format(default_format);
+    let statusChange = await fetch(
+      `https://api.lanyard.rest/v1/users/${PUBLIC_USERID}`,
+    );
+    statusChange = await statusChange.json();
+
+    if (!statusChange.success) return;
+    currentStatus = statusChange.data.discord_status;
   }, 60000);
 
   $effect(async () => {

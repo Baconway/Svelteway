@@ -35,13 +35,18 @@ export function interpretImageLinks(application_id, img) {
     return null;
   }
 
-  if (img.substring(0, 3) != "mp:") {
-    return `https://cdn.discordapp.com/app-assets/${application_id}/${img.substring(
-      0,
-    )}`;
-  } else {
-    return `https://media.discordapp.net/${img.substring(3)}`;
-  }
+  const image_link =
+    img.substring(0, 3) != "mp:"
+      ? `https://cdn.discordapp.com/app-assets/${application_id}/${img.substring(
+          0,
+        )}`
+      : `https://media.discordapp.net/${img.substring(3)}`;
+
+  let valid_check = fetch(image_link).then((response) => {
+    if (response.status != 200) image_link = "/salt2.png";
+  });
+
+  return image_link;
 }
 
 export function cleanUpActivities(activities) {
