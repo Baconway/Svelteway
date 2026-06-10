@@ -61,7 +61,10 @@
 >
   <div class="relative select-none">
     <img
-      class="relative w-85 h-30 object-cover object-bottom rounded-t-sm"
+      class="relative w-85 h-30 object-cover object-bottom rounded-t-sm {getDescription()
+        .name
+        ? 'animate-none'
+        : 'animate-pulse'}"
       draggable="false"
       src={getDescription().name
         ? `/_banners/${getDescription().name}`
