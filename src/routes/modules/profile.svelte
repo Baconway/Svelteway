@@ -48,7 +48,7 @@
   }, 60000);
 
   $effect(async () => {
-    let randomizer = await fetch("/randomizer");
+    let randomizer = await fetch("/internal/randomizer");
     randomizer = await randomizer.json();
     setDescription(randomizer);
   });
