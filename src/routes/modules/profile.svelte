@@ -67,7 +67,7 @@
         : 'animate-pulse'}"
       draggable="false"
       src={getDescription().name
-        ? `/_banners/${getDescription().name}`
+        ? `/sdez/frame/${getDescription().name}`
         : template_banner}
       alt="banner"
     />

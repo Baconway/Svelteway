@@ -26,7 +26,7 @@
 
 <svelte:head><title>Baconway</title></svelte:head>
 <div
-  style="background-image: url({`/_banners/${site_background}`});"
+  style="background-image: url({`/sdez/frame/${site_background}`});"
   class="fixed w-screen h-screen opacity-35 bg-cover"
 ></div>
 
